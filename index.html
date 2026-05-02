@@ -1712,12 +1712,12 @@ const MODULES = [
   },
 
   {
-    id: 'g6', kind: 'general', emoji: '🔒', accent: 'var(--c-general)',
+    id: 'g6', kind: 'general', emoji: '🛡️', accent: 'var(--c-general)',
     title: '合规与信息安全',
-    sub: '什么不能做、做了后果是什么',
+    sub: '信息安全 + 反商业贿赂 — 视感的双红线',
     tag: '通用 · 必修',
     blocks: [
-      { type: 'block', title: '核心要求',
+      { type: 'block', title: '🔒 第一条红线 · 信息安全 · 核心要求',
         body: `<p>员工必须严格遵守公司信息安全规定，<strong>妥善保管</strong>：</p>
         <ul>
           <li>公司涉密数据</li>
@@ -1726,7 +1726,7 @@ const MODULES = [
         </ul>
         <p>不得擅自泄露、传播、拷贝公司核心资料。</p>` },
 
-      { type: 'block', title: '明确禁止的行为',
+      { type: 'block', title: '信息安全 · 明确禁止的行为',
         body: `<ul>
           <li>未经允许将公司涉密文件外传、拷贝至个人设备</li>
           <li>向外部人员泄露公司商业秘密、客户信息</li>
@@ -1736,21 +1736,297 @@ const MODULES = [
         </ul>
         <div class="callout warning">⚠️ 工作文件必须统一存储至<strong>飞书云文档</strong>，禁止私自外传或拷贝。</div>` },
 
-      { type: 'block', title: '违规后果',
-        body: `<ol>
-          <li>视情节给予<strong>警告 / 罚款 / 降职</strong>等纪律处分</li>
-          <li>情节严重 → <strong>解除劳动合同 + 追究法律责任</strong></li>
-          <li>给公司造成损失 → <strong>承担赔偿责任</strong></li>
+      { type: 'block', title: '信息安全 · 沟通渠道：公司邮箱是唯一正式渠道',
+        body: `<p>视感对外沟通有一条硬规则：</p>
+        <div class="callout warning">🔑 <strong>任何具有法律效力或正式承诺性质的内容，必须用公司邮箱（@partykeys.org）发出。</strong></div>
+        <h3>必须走公司邮箱的内容</h3>
+        <ul>
+          <li><strong>合同</strong>、合作协议、补充协议、保密协议</li>
+          <li><strong>报价单</strong>、方案、需求确认、技术规格书</li>
+          <li>项目里程碑确认、<strong>验收意见</strong>、付款承诺</li>
+          <li>对外的<strong>官方回复</strong>（客户投诉、媒体提问、政府咨询）</li>
+          <li>给政府、监管机构、第三方机构的提交材料</li>
+          <li>公司层面的人事任命、组织变动通知</li>
+          <li>对外法律函件、声明</li>
+        </ul>
+        <h3 style="color:#f43f5e;">明确禁止的事</h3>
+        <ul>
+          <li>用<strong>个人 QQ / 微信 / 私人邮箱 / 短信</strong>处理上述内容</li>
+          <li>把公司邮箱内容<strong>转发到个人邮箱</strong>"备份"</li>
+          <li>用个人微信跟客户/供应商谈合同条款（即使对方主动这么提）</li>
+          <li>离职前把工作邮箱内容<strong>清空 / 转走</strong></li>
+        </ul>
+        <h3>为什么要这么严</h3>
+        <ol>
+          <li>私人渠道<strong>没有公司审计与留痕</strong>，事后无法举证、维权困难</li>
+          <li>员工离职后<strong>私人沟通断联</strong>，公司损失客户/供应商关系</li>
+          <li>个人渠道<strong>安全性低</strong>，容易被钓鱼、盗号、第三方截取导致泄密</li>
+          <li>司法争议中，个人微信<strong>不能等同</strong>于公司正式沟通</li>
         </ol>
-        <div class="callout">⚠️ 不要存侥幸心理 — 信息安全相关的处罚是公司红线。</div>` },
+        <div class="callout info">📌 <strong>微信只是即时辅助沟通的便利工具，不能替代邮件留痕。</strong>微信里讨论得再热闹，最终结论必须用公司邮箱再走一遍 — 这一步不是形式主义，是给视感和你<strong>双方留证据</strong>。</div>` },
 
-      { type: 'block', title: '远程办公信息安全要点',
+      { type: 'block', title: '信息安全 · 不能向无关人披露的内容',
+        body: `<p>视感的"敏感内容清单"（部分）— 下列任何一项，未经法务/HR 书面同意，<strong>不可向公司外部人披露</strong>：</p>
+        <ul>
+          <li><strong>客户名单</strong> / 客户联系方式 / 客户内部决策人</li>
+          <li><strong>供应商名单</strong> / 供应商报价 / 供应商谈判过程</li>
+          <li><strong>产品定价模型</strong> / 毛利结构 / 折扣规则 / 成本结构</li>
+          <li><strong>未发布的产品</strong>规划 / 技术方案 / 专利申请</li>
+          <li><strong>财务数据</strong> / 销售数据 / GMV / 订单量 / 库存量</li>
+          <li>内部组织调整 / 人事任命 / <strong>薪酬体系</strong></li>
+          <li><strong>融资进展</strong> / 投资方信息 / 估值</li>
+          <li>合作合同条款 / 渠道分成比例</li>
+          <li>客户投诉细节 / 危机处理方案 / 内部考核结果</li>
+        </ul>
+        <h3 style="color:#fbbf24;">"无关人"的明确定义</h3>
+        <p>下列人都属于"无关人" — 即使关系再好，业务信息也不要分享：</p>
+        <ul>
+          <li>你的<strong>家人、朋友、配偶</strong>（即使他/她不会传出去）</li>
+          <li>视感<strong>已经离职</strong>的前同事</li>
+          <li><strong>同行业从业者</strong>（即使是好朋友）</li>
+          <li><strong>媒体、自媒体、博主、猎头</strong></li>
+          <li>你的人脉里"对视感感兴趣的人"</li>
+          <li>任何不是<strong>因为视感工作目的</strong>、不是<strong>有知情必要 (need-to-know)</strong> 的人</li>
+        </ul>
+        <h3 style="color:#f43f5e;">明确禁止的具体行为</h3>
+        <ul>
+          <li>朋友圈 / 抖音 / 小红书 / 微博发<strong>未发布产品图、未公开数据</strong></li>
+          <li>群聊里转发<strong>内部资料</strong>（即使是私人小群）</li>
+          <li>跟<strong>猎头</strong>讲视感的内部数据（即使是为了"包装自己"）</li>
+          <li>跟前同事吃饭时聊视感最近的<strong>项目细节、人事变动、客户名单</strong></li>
+          <li>把<strong>工作截图</strong>发到任何外部群或个人微信（即使打码）</li>
+          <li>跟家人"分享"工作邮件、合同条款、未公开计划</li>
+        </ul>
+        <div class="callout">🛡 <strong>判断原则</strong>：在你嘴边的这条信息，如果<strong>登上明天的行业新闻头条</strong>，你会不会被叫去解释？如果会 — 别说出口。</div>` },
+
+      { type: 'block', title: '信息安全 · 远程办公要点',
         body: `<ul>
           <li>必须使用<strong>公司配置</strong>的办公设备</li>
           <li>不得用个人设备存储公司涉密数据 / 核心资料</li>
           <li>工作文件统一存到飞书云文档，不得私自外传、拷贝</li>
           <li>线上会议须开摄像头、保持专注</li>
         </ul>` },
+
+      { type: 'block', title: '⚖️ 第二条红线 · 廉洁与反商业贿赂 · 零容忍声明',
+        body: `<p>视感对<strong>任何形式的商业贿赂、回扣、不当利益输送</strong>，实行<strong>零容忍</strong>政策。</p>
+        <div class="callout warning"><strong>这不是 HR 流程问题。这是违法犯罪问题。</strong><br><br>
+        触线者，公司不会"内部处理" — 我们会立即<strong>解除劳动合同 + 移交司法机关 + 追究民事赔偿</strong>，三条<strong>同时</strong>执行。</div>
+        <p>不分金额大小、不分国内国外、不分入职时间长短、不分跟谁是朋友。</p>
+        <p style="color:#c4b5fd;">这一条比信息安全更重 — 因为它直接构成<strong>刑事犯罪</strong>。请认真读完后面 5 块。</p>` },
+
+      { type: 'block', title: '什么算"商业贿赂 / 回扣 / 不正当利益"',
+        body: `<p>商业贿赂的范围比"收钱"宽得多。下列任何一项都构成：</p>
+        <ul>
+          <li><strong>现金 / 银行转账 / 数字货币 / 礼品卡</strong></li>
+          <li><strong>实物礼品</strong>：手机、电脑、奢侈品、烟酒、珠宝、名表等</li>
+          <li><strong>虚开发票、报销不存在的费用</strong></li>
+          <li><strong>旅游、餐饮、娱乐场所</strong>的"招待"</li>
+          <li>给本人或亲属的<strong>工作机会、子女入学、家属医疗</strong>安排</li>
+          <li><strong>装修折扣、贷款减免、房产优惠</strong></li>
+          <li>给本人<strong>亲属、配偶、朋友</strong>的"代收"利益</li>
+          <li>接受供应商 / 客户提供的<strong>免费服务</strong></li>
+          <li>让本人或关系人在合作方公司<strong>"挂名领薪"</strong></li>
+        </ul>
+        <h3 style="color:#fbbf24;">⚠️ 特别警惕的伪装方式</h3>
+        <ul>
+          <li><strong>"节日福利"、"答谢"、"喝杯茶"、"小意思"</strong> — 名义不重要，本质重要</li>
+          <li>通过<strong>中间人、亲属、第三方公司</strong>转账 — 切不断责任链</li>
+          <li><strong>跨境支付、海外账户、虚拟货币</strong> — 不会因此规避追究</li>
+        </ul>` },
+
+      { type: 'block', title: '高风险岗位 · 谁特别需要警惕',
+        body: `<p>视感所有员工都有廉洁义务。但下面几类岗位<strong>面对的诱惑最大、责任也最重</strong>：</p>
+        <table class="tbl">
+          <thead><tr><th>岗位</th><th>高风险场景</th></tr></thead>
+          <tbody>
+            <tr><td><strong>采购</strong></td><td>工厂、供应商、原材料商主动给"返点"、"红包"、"考察邀请"</td></tr>
+            <tr><td><strong>品质 (QA)</strong></td><td>工厂希望你对不合格批次"放行"换取私利</td></tr>
+            <tr><td><strong>市场 / 品宣 / BD</strong></td><td>达人、KOL、广告代理、影视公司给"中介费"、"回扣点"</td></tr>
+            <tr><td><strong>销售（国内 + 海外）</strong></td><td>渠道商、经销商私下"分成"、"暗佣"</td></tr>
+            <tr><td><strong>财务</strong></td><td>被要求"配合"虚开发票、调整账目</td></tr>
+            <tr><td><strong>行政 / 总务</strong></td><td>装修、设备采购、招待报销中的小金额累计</td></tr>
+            <tr><td><strong>管理层 / 合伙人</strong></td><td>决策大额合作时的"友情费"</td></tr>
+          </tbody>
+        </table>
+        <div class="callout warning">📍 <strong>采购、市场、销售岗</strong>的同事请注意 — 你们是视感外部接口最频繁的角色，被攻击概率最高。<strong>任何主动靠近你的"好处"，背后都是有代价的</strong>。今天接的是 5 千，明天就是 5 万、50 万，最后是劳动合同 + 自由 + 家庭一起赔进去。</div>` },
+
+      { type: 'block', title: '法律红线 · 不要以为"小金额"安全',
+        body: `<p>中国《刑法》对商业贿赂有明确的刑事追究。视感员工的受贿/行贿主要适用以下罪名：</p>
+        <ul>
+          <li><strong>《刑法》第 163 条</strong> — 非国家工作人员受贿罪（你<strong>收</strong>回扣）</li>
+          <li><strong>《刑法》第 164 条</strong> — 对非国家工作人员行贿罪（你<strong>给</strong>回扣）</li>
+          <li><strong>《反不正当竞争法》第 7、19 条</strong> — 公司层面行政处罚（没收违法所得 + 10–300 万罚款 + 吊销执照）</li>
+        </ul>
+        <h3>金额起刑阶梯</h3>
+        <table class="tbl">
+          <thead><tr><th>金额阶梯</th><th>法律定性</th><th>受贿罪刑责</th></tr></thead>
+          <tbody>
+            <tr><td><strong>3 万元</strong>以上</td><td>数额较大</td><td><strong>5 年以下</strong>有期徒刑 / 拘役 + 罚金</td></tr>
+            <tr><td><strong>20 万元</strong>以上</td><td>数额巨大</td><td><strong>5 - 10 年</strong>有期徒刑 + 罚金</td></tr>
+            <tr><td><strong>300 万元</strong>以上</td><td>数额特别巨大</td><td><strong>10 年以上 / 无期徒刑</strong> + 罚金 + <strong>没收财产</strong></td></tr>
+          </tbody>
+        </table>
+        <div class="callout warning">
+          ⚠️ <strong>3 万元 = 起刑点</strong>。不是"几百万"才算犯法。一笔 <strong>3 万的灰色收入，可能就是 5 年牢狱</strong>。<br><br>
+          ⚠️ 行贿罪有类似阶梯。<br>
+          ⚠️ 违法所得 — <strong>公司有权追回</strong>；给公司造成的损失 — <strong>个人需赔偿</strong>。
+        </div>
+        <p style="font-size:11px;color:#8a8eb8;margin-top:8px;">📌 上述金额阈值依据现行《刑法》第 163、164 条 + 2016 年最高法、最高检司法解释 + 2020 年《刑法修正案（十一）》。最终适用以个案司法判断为准。</p>` },
+
+      { type: 'block', title: '视感的 7 条具体底线',
+        body: `<p>落到日常工作，下面 7 条是视感员工的<strong>硬底线</strong>：</p>
+        <ol>
+          <li>收到任何价值<strong>超过 100 元</strong>的礼品 / 现金 / 礼品卡 — <strong>24 小时内书面上报</strong>直属上级 + HR / 法务（飞书留痕）</li>
+          <li>节日期间（春节、中秋、618 等）来自合作方的礼品 — 一律走<strong>公司统一接收</strong>流程，不私下保留</li>
+          <li>任何商务宴请 — <strong>必须报备</strong>直属上级，超过公司标准的宴请直接拒绝</li>
+          <li>任何由<strong>供应商 / 客户出资</strong>的旅游、娱乐、培训、考察 — <strong>绝对拒绝</strong></li>
+          <li>任何给本人或家属的"工作机会"、"代收账户"、"亲属代持" — 视为利益输送，立即上报</li>
+          <li>跟<strong>竞争对手</strong>私下接触谈报价、市场分割、围标串标 — 触犯《反垄断法》《反不正当竞争法》刑民双追</li>
+          <li><strong>要求或暗示客户给"好处费"</strong>才能促成订单 — 行贿罪起刑</li>
+        </ol>
+        <div class="callout">📌 这 7 条不是 HR 建议，是视感<strong>用工合同已经写明的纪律</strong>。一条触线 = 解约。</div>` },
+
+      { type: 'block', title: '遇到灰色信号你应该怎么做',
+        body: `<p>如果你接到一个明显的灰色信号 — 比如供应商主动塞红包、客户暗示"返点就能签"、达人合作方暗示"个人账户"：</p>
+        <ol>
+          <li><strong>第一步</strong>：当面或飞书<strong>直接拒绝</strong>，不模糊、不暗示、不"先看看"</li>
+          <li><strong>第二步</strong>：<strong>24 小时内书面上报</strong>你的直属上级 + HR / 法务（飞书留痕，不要只口头上报）</li>
+          <li><strong>第三步</strong>：必要时由公司决定是否<strong>上报司法机关</strong></li>
+        </ol>
+        <h3 style="color:#f43f5e;">绝对不做的 4 件事</h3>
+        <ul>
+          <li>❌ 私下答应</li>
+          <li>❌ 模糊处理 / "先看看再说"</li>
+          <li>❌ 收下再想退</li>
+          <li>❌ 不告诉直属上级，自己处理</li>
+        </ul>
+        <div class="callout info">💡 <strong>拒绝得越果断、上报得越及时，对你越有利</strong>。一旦延迟、含糊、犹豫 — 事后即使你想退，也已经构成违纪，公司无法保护你。</div>` },
+
+      { type: 'block', title: '🚧 第三条红线 · 在职期间 · 跟竞品/同行的边界',
+        body: `<p>视感对员工跟<strong>竞品公司、同行业从业者</strong>的关系，有清晰的边界。<strong>三条红线</strong>各管一段 — 信息安全管"出门的信息"，廉洁管"进门的钱物"，<strong>竞业管"你这个人，今天和明天的归属"</strong>。</p>
+        <h3 style="color:#f43f5e;">在职期间 · 一律严禁</h3>
+        <p>只要你还是视感员工，下列行为<strong>无论周末/下班/请假期间</strong>都禁止：</p>
+        <ul>
+          <li>给<strong>竞品公司</strong>提供任何形式的咨询、兼职、顾问服务</li>
+          <li>在竞品公司<strong>持股、担任职务、挂名领薪</strong>（包括亲属代持）</li>
+          <li>帮<strong>竞品公司挖视感员工</strong>（俗称"反向挖角"）</li>
+          <li>跟竞品公司<strong>分享视感任何商业信息</strong>（哪怕"是老朋友"、"只是聊聊"）</li>
+          <li>私下接触视感的<strong>客户 / 供应商</strong>，从中赚取个人利益</li>
+          <li>用视感的<strong>工作时间、设备、资源</strong>做与视感无关或竞争性的业务</li>
+          <li>为竞品公司在公开场合<strong>站台 / 背书 / 写软文</strong></li>
+        </ul>
+        <h3>"竞品公司"的范围</h3>
+        <ul>
+          <li><strong>直接竞品</strong>：其他智能音乐硬件公司</li>
+          <li><strong>间接竞品</strong>：音乐教育、在线音乐工具、传统乐器/琴行</li>
+          <li>上下游可能<strong>互相替代</strong>的公司（比如某些跟视感产研撞线的硬件公司）</li>
+          <li>不确定时 — <strong>提前问 HR / 法务</strong>，不要"自己判断"</li>
+        </ul>
+        <div class="callout warning">📌 一旦发现 — 视为<strong>严重违纪 + 损害公司利益</strong>，按违规后果第 2-3 档处理（解约 + 追责 + 赔偿）。</div>` },
+
+      { type: 'block', title: '离职后 · 竞业限制（《劳动合同法》第 23、24 条）',
+        body: `<p>视感对部分岗位会签订《竞业限制协议》。法律依据：</p>
+        <ul>
+          <li>《劳动合同法》第 <strong>23</strong> 条 — 用人单位可以与员工<strong>约定</strong>竞业限制</li>
+          <li>《劳动合同法》第 <strong>24</strong> 条 — 适用范围 + 期限不超过 <strong>2 年</strong></li>
+        </ul>
+        <h3>谁会被签竞业协议</h3>
+        <ul>
+          <li><strong>高级管理人员</strong>（合伙人、中心负责人及以上）</li>
+          <li><strong>高级技术人员</strong>（核心研发、架构、算法、关键工艺）</li>
+          <li>其他<strong>负有保密义务</strong>的人员（接触核心客户/供应商/财务数据等）</li>
+        </ul>
+        <h3>双向义务</h3>
+        <table class="tbl">
+          <thead><tr><th>视感的义务</th><th>员工的义务</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>按合同约定<strong>按月支付经济补偿金</strong></td>
+              <td>离职 <strong>2 年内</strong>不得在竞品公司任职、自营、提供服务</td>
+            </tr>
+          </tbody>
+        </table>
+        <h3 style="color:#f43f5e;">违反竞业限制的后果</h3>
+        <ol>
+          <li><strong>返还</strong>已收到的全部经济补偿金</li>
+          <li>支付<strong>违约金</strong>（合同约定，通常为补偿金的 2-5 倍）</li>
+          <li>赔偿因此给视感造成的<strong>实际损失</strong>（可能是百万级）</li>
+        </ol>
+        <div class="callout warning">🚨 视感不会"算了"。<strong>一旦核实，会主动向法院起诉追究</strong>。已经发生过的真实案例：员工以"我没拿钱"为理由进了竞品公司，半年后被判返还所有补偿 + 双倍违约金 + 实际损失赔偿。</div>` },
+
+      { type: 'block', title: '每个部门的具体竞业风险点',
+        body: `<p>竞业不是抽象概念。<strong>每个部门都有自己最容易触线的具体场景</strong> — 提前知道，少走弯路：</p>
+        <table class="tbl">
+          <thead><tr><th>部门</th><th>最高风险情境</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>产研中心</strong><br>(赵岩)</td>
+              <td>把<strong>硬件结构图 / 软件代码 / 算法 / 专利方案</strong>带去竞品；离职后用视感技术帮其他公司"快速复刻"产品；私下指导其他公司怎么绕开视感专利</td>
+            </tr>
+            <tr>
+              <td><strong>交付中心</strong><br>(朱丹)</td>
+              <td>离职后把<strong>供应商名单 + 报价 + 谈判底牌</strong>带到竞品公司；私下推荐工厂"两头吃"；把视感的资质认证流程经验"打包"卖给同行</td>
+            </tr>
+            <tr>
+              <td><strong>国内电商</strong><br>(陈帮龙)</td>
+              <td>把<strong>主播 / 达人合作清单 + 客户数据库 + 直播间排播策略</strong>带到下家；离职后用视感套路"挖客户"；带走整个直播间团队"打包跳槽"</td>
+            </tr>
+            <tr>
+              <td><strong>海外电商</strong><br>(骆石川)</td>
+              <td>把<strong>海外渠道商联系方式 + Listing 模板 + 广告投放数据 + 关键词库</strong>带去竞品；离职后帮竞品快速"复制亚马逊增长"；把海外仓资源"私下分流"</td>
+            </tr>
+          </tbody>
+        </table>
+        <h3 style="color:#fbbf24;">通用红线（所有部门都适用）</h3>
+        <ul>
+          <li>视感的<strong>用户列表、定价模型、产品规划</strong>不能"装在脑子里"带走 — 在法律层面，<em>记忆中的商业秘密也是商业秘密</em>，可主张 <strong>"侵犯商业秘密"</strong>（《反不正当竞争法》第 9 条）</li>
+          <li>跟同行<strong>私下分享内部数据</strong> — 即使没有现金交易，也构成商业秘密泄露</li>
+          <li>用视感工作时间或设备<strong>给同行做"行业咨询"</strong>赚外快 — 直接构成在职竞业违规</li>
+        </ul>
+        <h3>跟同行交流的边界 — 什么可以、什么不可以</h3>
+        <table class="tbl">
+          <thead><tr><th>✅ 可以做</th><th>🚫 绝对不可以</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>参加公开行业会议、沙龙、媒体活动</td>
+              <td>跟同行<strong>私下交换内部数据</strong></td>
+            </tr>
+            <tr>
+              <td>分享公开发布的报告、白皮书</td>
+              <td>跟同行<strong>协调价格、分割市场</strong>(触犯反垄断)</td>
+            </tr>
+            <tr>
+              <td>跟前同事保持<strong>私人友谊</strong></td>
+              <td>跟前同事谈视感<strong>当前业务细节</strong></td>
+            </tr>
+            <tr>
+              <td>在公开课程作为讲师（不涉及视感未公开内容）</td>
+              <td>跟猎头透露视感<strong>薪酬体系、组织架构</strong></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="callout info">💡 一句话判断：<strong>这件事如果让 Bohan 在飞书全员群看到，你会不会脸红？</strong>会 — 别做。</div>` },
+
+      { type: 'block', title: '违规后果 · 综合处理',
+        body: `<p>视感对违反<strong>三条红线</strong>（信息安全 / 廉洁 / 竞业）的统一处理：</p>
+        <table class="tbl">
+          <thead><tr><th>违规情节</th><th>处理</th></tr></thead>
+          <tbody>
+            <tr><td>一般违规</td><td>警告 / 罚款 / 降职</td></tr>
+            <tr><td>情节严重</td><td><strong>解除劳动合同 + 追究法律责任</strong></td></tr>
+            <tr><td>给公司造成损失</td><td><strong>承担民事赔偿</strong></td></tr>
+            <tr><td>违反竞业限制</td><td><strong>返还补偿金 + 违约金 + 实际损失赔偿</strong></td></tr>
+            <tr><td>触犯《刑法》<br>(商业贿赂、商业秘密泄露、反垄断等)</td><td><strong>解除劳动合同 + 移交司法机关 + 追究刑事责任 + 民事赔偿</strong>，<em>四条同时执行</em></td></tr>
+          </tbody>
+        </table>
+        <div class="callout warning">
+          视感不接受任何"内部消化"的请求。<br><br>
+          <strong>这跟你交付的销量无关、跟你的工龄无关、跟你跟谁是朋友无关。</strong><br><br>
+          一个能拿回扣的员工，今天能收供应商 5 万，明天就能跟竞争对手共谋出卖视感。<br>
+          一个能泄露客户信息的员工，今天能把名单卖给同行，明天就能把代码仓库打包带走。<br>
+          一个能违反竞业的员工，今天能拿了视感的钱进竞品，明天就能把视感打到亏损。<br><br>
+          这是视感的底线 — <strong>触即清退、触即追责。</strong>
+        </div>` },
     ],
     quiz: [
       { q: '工作文件应该如何存储？',
@@ -1759,12 +2035,58 @@ const MODULES = [
       { q: '远程办公期间能否用个人电脑存涉密文件？',
         opts: ['可以，方便就行','不能，必须用公司配置的设备','加密就可以','VPN 上就行'],
         a: 1, why: '严禁。必须用公司配置的办公设备，否则违反信息安全规定。' },
-      { q: '泄露公司商业秘密<strong>最严重</strong>的后果是？',
-        opts: ['口头警告','扣半个月工资','解除劳动合同 + 追究法律责任 + 赔偿','贡献给零食基金'],
-        a: 2, why: '情节严重 → 解除劳动合同 + 法律责任 + 赔偿损失。这是公司红线。' },
       { q: '以下哪个行为<strong>不</strong>违反信息安全？',
         opts: ['把客户名单 Excel 发到自己微信','在飞书群里跟同事讨论项目细节','把代码仓库 clone 到家用电脑','给猎头发产品路线图'],
         a: 1, why: '飞书群内的工作沟通是合规的；其他三项均涉及外传或个人设备存储。' },
+      { q: '关于商业贿赂，下列说法<strong>正确</strong>的是？',
+        opts: [
+          '只要金额低于 1 万元就不构成犯罪',
+          '节日"答谢"、"喝杯茶"等小礼品不算商业贿赂',
+          '中国《刑法》对商业贿赂受贿的<strong>起刑点为 3 万元</strong>，超过即可追究刑责',
+          '通过亲属、第三方公司收取就不会被追究'],
+        a: 2, why: '《刑法》163 条 + 2016 司法解释，3 万元为起刑点（数额较大），处 5 年以下有期徒刑 / 拘役。<strong>不分金额大小、不分名义、不分是否经第三方</strong> — 都在追究范围内。"小金额"和"包装名义"是最常见的两个心理陷阱。' },
+      { q: '春节期间，一位长期合作的供应商主动送你 <strong>2000 元购物卡</strong>，你应该？',
+        opts: [
+          '私下收下，反正是好意',
+          '婉拒但收下"先看看"',
+          '当面拒绝 + 24 小时内书面上报直属上级 + HR / 法务（飞书留痕）',
+          '收下再转交给公司前台'],
+        a: 2, why: '视感规定 — 任何 > 100 元的礼品 / 现金 / 礼品卡都必须 24 小时内书面上报。当面拒绝 + 飞书留痕是<strong>唯一</strong>正确做法。"先收下再说" / "再退就行" 这种思路已经构成违纪，公司事后无法保护你。' },
+      { q: '商业贿赂受贿罪在中国《刑法》下，<strong>最重</strong>的刑罚是？',
+        opts: [
+          '单纯民事赔偿，不涉及刑事',
+          '1 年以下拘役',
+          '5 年以下有期徒刑 + 罚金',
+          '10 年以上 / 无期徒刑 + 罚金 + 没收财产'],
+        a: 3, why: '数额特别巨大（≥300 万元）可处 10 年以上至无期徒刑 + 罚金 + 没收个人财产。商业贿赂<strong>不是"灰色行为"，是重罪</strong>。一旦触线，自由、财产、家庭都可能被卷入。' },
+      { q: '以下哪类岗位<strong>不</strong>属于视感公示的"高风险岗位"？',
+        opts: [
+          '采购',
+          '市场 / 品宣 / BD',
+          '品质 (QA)',
+          '产品研发 - 软件开发'],
+        a: 3, why: '视感明确公示的高风险岗位是：采购、品质、市场/品宣/BD、销售、财务、行政、合伙人 — 都是直接接触外部利益方的岗位。软件开发岗虽然有信息安全义务，但不属于商业贿赂高风险岗。' },
+      { q: '跟客户/供应商签合同前，关键条款的沟通应该走？',
+        opts: [
+          '微信，方便快捷',
+          '个人邮箱，反正记下来就行',
+          '<strong>公司邮箱（@partykeys.org）</strong>',
+          '短信和电话'],
+        a: 2, why: '任何具有法律效力或正式承诺性质的内容（合同、报价单、方案、付款承诺等），必须用公司邮箱发出。微信只是即时辅助沟通，最终结论必须邮件留痕 — 这一步不是形式主义，是给公司和你双方留证据。' },
+      { q: '下列<strong>违反</strong>视感信息安全规则的行为是？',
+        opts: [
+          '在飞书工作群里讨论项目细节',
+          '<strong>把工作邮件截图发到家人微信"分享一下"</strong>',
+          '用公司邮箱给客户发报价单',
+          '在公开行业会议上分享视感官方已发布的产品介绍'],
+        a: 1, why: '"无关人"包括家人、配偶、朋友、前同事、同行、媒体、猎头 — 即使关系再好、即使他/她不会传出去，业务信息也不应分享。家人不属于"知情必要"范围。' },
+      { q: '关于<strong>竞业</strong>，下列说法<strong>正确</strong>的是？',
+        opts: [
+          '只要不收钱，就可以下班后给竞品公司"提供咨询"',
+          '<strong>《劳动合同法》第 24 条规定竞业限制期限最长不超过 2 年</strong>',
+          '离职后只要换个名字，就不算违反竞业',
+          '记在脑子里的客户名单不算商业秘密'],
+        a: 1, why: '《劳动合同法》第 23、24 条规定：竞业限制最长不超过 2 年，公司需支付经济补偿。其他三项都是错的：(1) 不收钱也算在职竞业违规 (2) 改名换岗仍受合同约束 (3) 记忆中的客户名单在法律上仍是商业秘密，可主张侵权。' },
     ]
   },
 
