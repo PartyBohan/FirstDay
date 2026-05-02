@@ -524,6 +524,236 @@
 
   .hidden { display: none !important; }
 
+  /* ===== Org chart (in 公司与文化) ===== */
+  .org-ceo {
+    text-align: center; margin: 12px 0;
+  }
+  .org-ceo .ceo-card {
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 14px 24px;
+    background: linear-gradient(135deg, rgba(167,139,250,0.18), rgba(244,114,182,0.12));
+    border: 1px solid rgba(167,139,250,0.35);
+    border-radius: 14px;
+  }
+  .org-avatar {
+    width: 44px; height: 44px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; font-weight: 700;
+    background: linear-gradient(135deg, #a78bfa, #f472b6);
+    color: #1a1040; flex-shrink: 0;
+  }
+  .org-avatar.lg { width: 56px; height: 56px; font-size: 20px; }
+  .org-line {
+    height: 24px; width: 2px;
+    background: linear-gradient(180deg, rgba(167,139,250,0.6), rgba(167,139,250,0.05));
+    margin: 4px auto;
+  }
+  .org-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+    margin-top: 8px;
+  }
+  .org-leader {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-top: 3px solid var(--lead-color, #a78bfa);
+    border-radius: 14px;
+    padding: 16px 14px;
+  }
+  .org-leader .row1 {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 8px;
+  }
+  .org-leader .name { font-size: 16px; font-weight: 700; color: #fff; }
+  .org-leader .role { font-size: 12px; color: #b4b8e0; }
+  .org-leader .alias { font-size: 11px; color: #8a8eb8; margin-top: 2px; }
+  .org-leader .teams {
+    display: flex; flex-wrap: wrap; gap: 4px; margin-top: 10px;
+  }
+  .org-leader .team-chip {
+    padding: 3px 8px; font-size: 11px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 8px; color: #d8dafc;
+  }
+
+  /* ===== Tool kind cards ===== */
+  .card.tool::before { background: var(--accent, #38bdf8); }
+  .card.tool .badge.tool {
+    background: rgba(56,189,248,0.18); color: #7dd3fc;
+  }
+
+  /* ===== Flow map ===== */
+  .flowmap {
+    display: flex; flex-direction: column; gap: 0;
+    margin: 16px 0;
+  }
+  .flow-stage {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-left: 4px solid var(--stage-color, #38bdf8);
+    border-radius: 12px;
+    padding: 12px 16px;
+    display: flex; gap: 14px; align-items: flex-start;
+  }
+  .flow-stage .num {
+    width: 28px; height: 28px; flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--stage-color, #38bdf8);
+    color: #0f1029; font-weight: 700; font-size: 13px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .flow-stage .title { font-size: 15px; font-weight: 600; color: #fff; }
+  .flow-stage .owner { font-size: 11px; color: #8a8eb8; margin-top: 2px; }
+  .flow-stage .desc { font-size: 13px; color: #d8dafc; margin-top: 6px; line-height: 1.6; }
+  .flow-arrow {
+    text-align: center; font-size: 16px; color: rgba(167,139,250,0.5);
+    line-height: 1; padding: 4px 0;
+  }
+  .flow-loop {
+    margin-top: 10px; padding: 10px 14px;
+    background: linear-gradient(135deg, rgba(251,191,36,0.08), rgba(244,114,182,0.06));
+    border: 1px dashed rgba(251,191,36,0.3);
+    border-radius: 10px; font-size: 13px; color: #fcd34d;
+  }
+
+  /* ===== Glossary ===== */
+  .glossary-search {
+    position: sticky; top: 60px; z-index: 5;
+    margin: 8px 0 16px;
+    padding: 10px 14px;
+    background: rgba(15,16,41,0.85);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .glossary-search input {
+    flex: 1; background: transparent; border: none; outline: none;
+    color: #fff; font-size: 14px; font-family: inherit;
+  }
+  .glossary-search .icon { color: #8a8eb8; font-size: 14px; }
+  .glossary-cat-tabs {
+    display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px;
+  }
+  .glossary-cat-tab {
+    padding: 5px 12px; font-size: 12px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 100px; cursor: pointer;
+    color: #b4b8e0; transition: all .15s;
+  }
+  .glossary-cat-tab:hover { background: rgba(255,255,255,0.1); }
+  .glossary-cat-tab.active {
+    background: rgba(56,189,248,0.2); border-color: #38bdf8; color: #fff;
+  }
+  .glossary-list {
+    display: grid; gap: 10px;
+  }
+  .glossary-item {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-left: 3px solid var(--cat-color, #38bdf8);
+    border-radius: 10px; padding: 12px 14px;
+  }
+  .glossary-item .term {
+    font-size: 14px; font-weight: 600; color: #fff;
+  }
+  .glossary-item .term .cat {
+    display: inline-block;
+    margin-left: 8px; padding: 1px 7px;
+    font-size: 10px; font-weight: 500;
+    background: rgba(255,255,255,0.08);
+    color: #b4b8e0; border-radius: 100px;
+    vertical-align: 2px;
+  }
+  .glossary-item .def {
+    font-size: 13px; color: #d8dafc; margin-top: 4px; line-height: 1.6;
+  }
+  .glossary-empty {
+    text-align: center; padding: 32px;
+    color: #8a8eb8; font-size: 13px;
+  }
+
+  /* ===== Helpdesk ===== */
+  .helpdesk-table {
+    display: grid; gap: 8px;
+  }
+  .helpdesk-row {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 12px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 12px 14px;
+    transition: all .15s;
+  }
+  .helpdesk-row:hover {
+    background: rgba(255,255,255,0.07);
+    border-color: rgba(255,255,255,0.16);
+  }
+  .helpdesk-q {
+    font-size: 13px; color: #d8dafc; line-height: 1.5;
+    display: flex; gap: 8px;
+  }
+  .helpdesk-q .icon { flex-shrink: 0; }
+  .helpdesk-a {
+    font-size: 13px; color: #fff; font-weight: 500; line-height: 1.5;
+    display: flex; gap: 8px; align-items: flex-start;
+  }
+  .helpdesk-a .arrow { color: #a78bfa; flex-shrink: 0; }
+  .helpdesk-a strong { color: #c4b5fd; }
+  @media (max-width: 600px) {
+    .helpdesk-row { grid-template-columns: 1fr; gap: 6px; }
+    .helpdesk-a { padding-left: 18px; }
+  }
+
+  /* ===== Checklist ===== */
+  .checklist-progress {
+    background: rgba(255,255,255,0.06);
+    border-radius: 100px; height: 8px;
+    overflow: hidden; margin: 8px 0 16px;
+  }
+  .checklist-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #a78bfa, #4ade80);
+    transition: width .3s;
+  }
+  .checklist-section {
+    margin-bottom: 18px;
+    padding: 14px 16px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+  }
+  .checklist-section h3 {
+    margin: 0 0 10px; font-size: 14px; color: #c4b5fd;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .checklist-section h3 .stage-prog {
+    font-size: 11px; color: #8a8eb8; font-weight: 400;
+  }
+  .check-item {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 8px 4px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background .15s;
+  }
+  .check-item:hover { background: rgba(255,255,255,0.04); }
+  .check-item input[type="checkbox"] {
+    margin: 2px 0 0; flex-shrink: 0;
+    width: 18px; height: 18px;
+    accent-color: #4ade80;
+    cursor: pointer;
+  }
+  .check-item .ci-text {
+    font-size: 14px; color: #d8dafc; line-height: 1.5;
+  }
+  .check-item.done .ci-text {
+    color: #8a8eb8; text-decoration: line-through;
+  }
+
   /* ===== Admin Mode ===== */
   .admin-badge {
     display: inline-flex; align-items: center; gap: 4px;
@@ -669,6 +899,91 @@ const MODULES = [
           <div class="city-card"><div class="city-name">📍 深圳</div><div class="city-role">交付部 · 国内销售 · 国际出海</div></div>
         </div>
         <div class="callout info">如果你不知道某件事该找哪个城市，先问你的直属上级或带教导师 — 别 cold call 跨城同事。</div>` },
+
+      { type: 'block', title: '组织架构 · 4 位中心负责人',
+        body: `<p>视感目前由 <strong>Bohan</strong> 直接带 4 个中心。下面是真实的组织架构：</p>
+        <div class="org-ceo">
+          <div class="ceo-card">
+            <div class="org-avatar lg">B</div>
+            <div style="text-align:left;">
+              <div style="font-size:16px;font-weight:700;color:#fff;">张博涵 / Bohan</div>
+              <div style="font-size:12px;color:#b4b8e0;">创始人 · CEO</div>
+            </div>
+          </div>
+          <div class="org-line"></div>
+        </div>
+        <div class="org-grid">
+          <div class="org-leader" style="--lead-color:#f472b6">
+            <div class="row1">
+              <div class="org-avatar" style="background:linear-gradient(135deg,#f472b6,#ec4899);">赵</div>
+              <div>
+                <div class="name">赵岩</div>
+                <div class="role">产研中心 负责人</div>
+                <div class="alias">≈ 产品研发部</div>
+              </div>
+            </div>
+            <div class="teams">
+              <span class="team-chip">软件</span>
+              <span class="team-chip">硬件</span>
+              <span class="team-chip">结构</span>
+              <span class="team-chip">UI 设计</span>
+              <span class="team-chip">测试</span>
+              <span class="team-chip">内容</span>
+            </div>
+          </div>
+          <div class="org-leader" style="--lead-color:#34d399">
+            <div class="row1">
+              <div class="org-avatar" style="background:linear-gradient(135deg,#34d399,#10b981);">朱</div>
+              <div>
+                <div class="name">朱丹</div>
+                <div class="role">交付中心 负责人</div>
+                <div class="alias">≈ 供应链交付部</div>
+              </div>
+            </div>
+            <div class="teams">
+              <span class="team-chip">采购</span>
+              <span class="team-chip">仓库</span>
+              <span class="team-chip">品质</span>
+              <span class="team-chip">售后</span>
+            </div>
+          </div>
+          <div class="org-leader" style="--lead-color:#fbbf24">
+            <div class="row1">
+              <div class="org-avatar" style="background:linear-gradient(135deg,#fbbf24,#f59e0b);color:#451a03">陈</div>
+              <div>
+                <div class="name">陈帮龙</div>
+                <div class="role">国内电商 负责人</div>
+                <div class="alias">≈ 国内销售部</div>
+              </div>
+            </div>
+            <div class="teams">
+              <span class="team-chip">店长</span>
+              <span class="team-chip">主播</span>
+              <span class="team-chip">场控</span>
+              <span class="team-chip">品宣</span>
+              <span class="team-chip">客服</span>
+              <span class="team-chip">视频</span>
+              <span class="team-chip">渠道</span>
+            </div>
+          </div>
+          <div class="org-leader" style="--lead-color:#a78bfa">
+            <div class="row1">
+              <div class="org-avatar" style="background:linear-gradient(135deg,#a78bfa,#8b5cf6);">骆</div>
+              <div>
+                <div class="name">骆石川</div>
+                <div class="role">海外电商 负责人</div>
+                <div class="alias">≈ 海外销售部</div>
+              </div>
+            </div>
+            <div class="teams">
+              <span class="team-chip">渠道</span>
+              <span class="team-chip">亚马逊</span>
+              <span class="team-chip">独立站</span>
+              <span class="team-chip">客服</span>
+            </div>
+          </div>
+        </div>
+        <div class="callout info">📌 4 个"中心"对应你在大厅看到的 4 个部门概览。"中心"是更新的官方叫法，"部"是早期叫法 — 内部两种说法都通用。</div>` },
 
       { type: 'block', title: '六条价值观 · 来自 CEO 内部信',
         body: `<p>下面六条是 Bohan 在内部信里亲笔提炼的。<strong>每条不是抽象口号，是关键时刻的决策依据</strong>。请认真读完。</p>
@@ -1515,6 +1830,302 @@ const MODULES = [
         a: 1, why: 'FBA = Fulfillment by Amazon，亚马逊代仓储和代发货服务。' },
     ]
   },
+
+  /* ============ 工具箱 (4) — 永远解锁、无测验、不计入进度 ============ */
+  {
+    id: 't_flow', kind: 'tool', emoji: '🗺️', accent: 'var(--c-general)',
+    title: '跨部门流程地图',
+    sub: '一颗硬件 idea 怎么从研发走到用户手上',
+    tag: '工具箱 · 速查',
+    blocks: [
+      { type: 'block', title: '一颗产品的全生命周期',
+        body: `<p>这是视感一颗硬件产品<strong>从 idea 到用户、再到退货循环</strong>的完整流程。每个阶段标了 owner — 你将在视感参与的工作大概率落在其中某一段。</p>
+        <div class="flowmap">
+          <div class="flow-stage" style="--stage-color:#f472b6">
+            <div class="num">1</div>
+            <div>
+              <div class="title">技术 / 产品探索</div>
+              <div class="owner">产研中心 · 研发部 + 软件部</div>
+              <div class="desc">探索 N+1 / N+2 代产品的技术方向、新交互、新材料、新协议。不直接出货，但决定 12-24 个月后的产品形态。</div>
+            </div>
+          </div>
+          <div class="flow-arrow">↓ 技术 idea 转化为产品定义</div>
+
+          <div class="flow-stage" style="--stage-color:#f472b6">
+            <div class="num">2</div>
+            <div>
+              <div class="title">硬件设计 + 打样</div>
+              <div class="owner">产研中心 · 硬件部 (结构) + UI 设计</div>
+              <div class="desc">出 B0 / B1 / B2 样。结构、外观、按键手感、内部排布全部跑通。每一轮样机找出问题再迭代。</div>
+            </div>
+          </div>
+          <div class="flow-arrow">↓ 样机定型，进入备料</div>
+
+          <div class="flow-stage" style="--stage-color:#34d399">
+            <div class="num">3</div>
+            <div>
+              <div class="title">采购备料</div>
+              <div class="owner">交付中心 · 采购</div>
+              <div class="desc">按 BOM 跟工厂、供应商谈价、签合同、跟交期。原材料 / 元器件提前备齐。</div>
+            </div>
+          </div>
+          <div class="flow-arrow">↓ 物料到位，进入工厂</div>
+
+          <div class="flow-stage" style="--stage-color:#34d399">
+            <div class="num">4</div>
+            <div>
+              <div class="title">工厂量产 + 审厂</div>
+              <div class="owner">工厂 (外部) · 产研硬件部审厂 · 交付品质把控</div>
+              <div class="desc">视感同事到工厂现场审良率、工艺、产能。同时品质做抽检和资质 / 第三方认证 (CE / FCC / 3C 等)。</div>
+            </div>
+          </div>
+          <div class="flow-arrow">↓ 量产成品 → 入库</div>
+
+          <div class="flow-stage" style="--stage-color:#34d399">
+            <div class="num">5</div>
+            <div>
+              <div class="title">仓库入库 + SKU 管理</div>
+              <div class="owner">交付中心 · 仓库</div>
+              <div class="desc">成品入库、SKU 标记、备货分配。决定哪些发国内、哪些发海外仓。</div>
+            </div>
+          </div>
+          <div class="flow-arrow">↓ 分发到各销售渠道</div>
+
+          <div class="flow-stage" style="--stage-color:#fbbf24">
+            <div class="num">6a</div>
+            <div>
+              <div class="title">国内销售 (主战场：直播间)</div>
+              <div class="owner">国内电商 · 主播 + 客服 + 场控 + 品宣 + 渠道</div>
+              <div class="desc">直播间排播 / 售后客服 / 品牌传播找达人导流 / 渠道商谈线下入驻。大促节点 (618 / 双11) 是关键。</div>
+            </div>
+          </div>
+          <div class="flow-stage" style="--stage-color:#a78bfa">
+            <div class="num">6b</div>
+            <div>
+              <div class="title">海外销售 (主战场：亚马逊 + 独立站)</div>
+              <div class="owner">海外电商 · 渠道 + 亚马逊 + 独立站 + 客服</div>
+              <div class="desc">大客户 / 经销商代销、亚马逊多站点 (US/EU/JP)、Shopify 独立站投流。跨境物流、汇率、海外合规额外考量。</div>
+            </div>
+          </div>
+          <div class="flow-arrow">↓ 用户买到、用上</div>
+
+          <div class="flow-stage" style="--stage-color:#fb923c">
+            <div class="num">7</div>
+            <div>
+              <div class="title">用户使用 → 反馈回流</div>
+              <div class="owner">客服 (国内 + 海外) → 产研中心</div>
+              <div class="desc">客服收集吐槽和好评。重要反馈回流给产研，影响下一代产品定义。</div>
+            </div>
+          </div>
+
+          <div class="flow-loop">↩️ <strong>退货循环</strong>：7 天无理由退货 → 仓库验收 → 重新打包 → 重新上架。返修问题 → 维修流程 → 重新入库或报废。这部分由<strong>交付中心 (仓库 + 售后)</strong> 主理。</div>
+        </div>
+        <div class="callout info">💡 看这张图最大的价值是 — <strong>找到自己的位置</strong>。不管你属于哪个部门，你的工作都在这条链路的某一段。下一次跨部门对接时，看一眼这张图就知道"我的输出去哪里 / 我的输入从哪里来"。</div>` },
+    ],
+    quiz: []
+  },
+
+  {
+    id: 't_glossary', kind: 'tool', emoji: '📒', accent: 'var(--c-general)',
+    title: '视感黑话词典',
+    sub: '听不懂的术语，先来这里查一下',
+    tag: '工具箱 · 速查',
+    blocks: [
+      { type: 'glossary', title: '术语速查',
+        body: '' /* rendered dynamically */ },
+    ],
+    quiz: []
+  },
+
+  {
+    id: 't_help', kind: 'tool', emoji: '🆘', accent: 'var(--c-general)',
+    title: '求助路径黄页',
+    sub: '遇到 X 问题，找 Y 角色',
+    tag: '工具箱 · 速查',
+    blocks: [
+      { type: 'block', title: '快速对照表',
+        body: `<p>新人最大的内耗，是<strong>不知道这事该问谁，又不敢乱问</strong>。下面这张表把视感最常见的求助场景列出来 — 把它当成你前 3 个月的"决策外挂"。</p>
+        <h3 style="color:#c4b5fd;margin-top:18px;">📋 行政 / 入职 / 设备类</h3>
+        <div class="helpdesk-table">
+          <div class="helpdesk-row"><div class="helpdesk-q"><span class="icon">❓</span>电脑 / 显示器 / 键鼠故障</div>
+            <div class="helpdesk-a"><span class="arrow">→</span><div><strong>行政部 设备维护专员</strong><br><span style="color:#8a8eb8;font-size:11px;">常州 15189783376 · 深圳 13423993135</span></div></div></div>
+          <div class="helpdesk-row"><div class="helpdesk-q"><span class="icon">❓</span>办公用品申领 / 会议室预约 / 快递</div>
+            <div class="helpdesk-a"><span class="arrow">→</span><div><strong>行政部</strong></div></div></div>
+          <div class="helpdesk-row"><div class="helpdesk-q"><span class="icon">❓</span>钉钉 / 飞书账号开通 / 异常</div>
+            <div class="helpdesk-a"><span class="arrow">→</span><div><strong>行政部</strong> (开通) · <strong>部门负责人</strong> (协助)</div></div></div>
+          <div class="helpdesk-row"><div class="helpdesk-q"><span class="icon">❓</span>门禁卡 / 工位变更</div>
+            <div class="helpdesk-a"><span class="arrow">→</span><div><strong>行政部</strong></div></div></div>
+        </div>
+
+        <h3 style="color:#c4b5fd;margin-top:18px;">💰 薪酬 / 合同 / 考勤类</h3>
+        <div class="helpdesk-table">
+          <div class="helpdesk-row"><div class="helpdesk-q"><span class="icon">❓</span>工资明细 / 扣税疑问</div>
+            <div class="helpdesk-a"><span class="arrow">→</span><div><strong>人力薪酬专员</strong> (3 个工作日内反馈)</div></div></div>
+          <div class="helpdesk-row"><div class="helpdesk-q"><span class="icon">❓</span>社保 / 公积金缴纳</div>
+            <div class="helpdesk-a"><span class="arrow">→</span><div><strong>人力 (社保专员)</strong></div></div></div>
+          <div class="helpdesk-row"><div class="helpdesk-q"><span class="icon">❓</span>劳动合同 / 试用期 / 转正考核</div>
+            <div class="helpdesk-a"><span class="arrow">→</span><div><strong>人力</strong> + <strong>直属上级</strong></div></div></div>
+          <div class="helpdesk-row"><div class="helpdesk-q"><span class="icon">❓</span>请假 / 补卡 / 加班 / 调休 审批</div>
+            <div class="helpdesk-a"><span class="arrow">→</span><div><strong>钉钉 APP</strong> 走流程 → 直属上级审批</div></div></div>
+          <div class="helpdesk-row"><div class="helpdesk-q"><span class="icon">❓</span>报销 / 出差申请</div>
+            <div class="helpdesk-a"><span class="arrow">→</span><div><strong>钉钉 APP → 审批</strong></div></div></div>
+        </div>
+
+        <h3 style="color:#c4b5fd;margin-top:18px;">🤝 工作协作类</h3>
+        <div class="helpdesk-table">
+          <div class="helpdesk-row"><div class="helpdesk-q"><span class="icon">❓</span>不知道某项工作找谁对接</div>
+            <div class="helpdesk-a"><span class="arrow">→</span><div><strong>直属上级 / 带教导师</strong> — 永远是第一站</div></div></div>
+          <div class="helpdesk-row"><div class="helpdesk-q"><span class="icon">❓</span>跨部门协作不顺</div>
+            <div class="helpdesk-a"><span class="arrow">→</span><div><strong>直属上级</strong> 帮你升级；切忌自己跟对方部门拉锯</div></div></div>
+          <div class="helpdesk-row"><div class="helpdesk-q"><span class="icon">❓</span>对公司方向 / 战略有疑问</div>
+            <div class="helpdesk-a"><span class="arrow">→</span><div><strong>直属上级</strong> · 也可在飞书直接 @ Bohan (他不回避质疑)</div></div></div>
+        </div>
+
+        <h3 style="color:#c4b5fd;margin-top:18px;">🔧 各业务对接</h3>
+        <div class="helpdesk-table">
+          <div class="helpdesk-row"><div class="helpdesk-q"><span class="icon">❓</span>产品历史决策 / 技术方案</div>
+            <div class="helpdesk-a"><span class="arrow">→</span><div><strong>产研中心 (赵岩)</strong> · 飞书知识库</div></div></div>
+          <div class="helpdesk-row"><div class="helpdesk-q"><span class="icon">❓</span>代码仓库权限 / Git / CI / 上线</div>
+            <div class="helpdesk-a"><span class="arrow">→</span><div><strong>软件部技术负责人</strong></div></div></div>
+          <div class="helpdesk-row"><div class="helpdesk-q"><span class="icon">❓</span>SKU / 备货 / 库存查询</div>
+            <div class="helpdesk-a"><span class="arrow">→</span><div><strong>交付中心 - 仓库</strong></div></div></div>
+          <div class="helpdesk-row"><div class="helpdesk-q"><span class="icon">❓</span>第三方资质 / CE/FCC/3C 认证</div>
+            <div class="helpdesk-a"><span class="arrow">→</span><div><strong>交付中心 - 品质</strong></div></div></div>
+          <div class="helpdesk-row"><div class="helpdesk-q"><span class="icon">❓</span>采购对接 / 工厂沟通</div>
+            <div class="helpdesk-a"><span class="arrow">→</span><div><strong>交付中心 - 采购 (朱丹)</strong></div></div></div>
+          <div class="helpdesk-row"><div class="helpdesk-q"><span class="icon">❓</span>7 天无理由退货 / 返修流程</div>
+            <div class="helpdesk-a"><span class="arrow">→</span><div><strong>交付中心 - 仓库 + 售后</strong></div></div></div>
+          <div class="helpdesk-row"><div class="helpdesk-q"><span class="icon">❓</span>直播间排播 / 主播问题 / 客服话术</div>
+            <div class="helpdesk-a"><span class="arrow">→</span><div><strong>国内电商 (陈帮龙)</strong> · 店长</div></div></div>
+          <div class="helpdesk-row"><div class="helpdesk-q"><span class="icon">❓</span>达人 / KOL / 品牌传播合作</div>
+            <div class="helpdesk-a"><span class="arrow">→</span><div><strong>国内电商 - 品宣</strong></div></div></div>
+          <div class="helpdesk-row"><div class="helpdesk-q"><span class="icon">❓</span>线下渠道入驻 / 分成谈判</div>
+            <div class="helpdesk-a"><span class="arrow">→</span><div><strong>国内电商 - 渠道</strong></div></div></div>
+          <div class="helpdesk-row"><div class="helpdesk-q"><span class="icon">❓</span>亚马逊 Listing / 广告 / FBA</div>
+            <div class="helpdesk-a"><span class="arrow">→</span><div><strong>海外电商 (骆石川)</strong> - 亚马逊</div></div></div>
+          <div class="helpdesk-row"><div class="helpdesk-q"><span class="icon">❓</span>独立站 / Shopify / 海外投流</div>
+            <div class="helpdesk-a"><span class="arrow">→</span><div><strong>海外电商 - 独立站</strong></div></div></div>
+          <div class="helpdesk-row"><div class="helpdesk-q"><span class="icon">❓</span>跨境物流 / 海外仓 / 清关</div>
+            <div class="helpdesk-a"><span class="arrow">→</span><div><strong>海外电商 + 交付中心 - 物流</strong></div></div></div>
+        </div>
+
+        <h3 style="color:#c4b5fd;margin-top:18px;">🚨 紧急 / 信息安全</h3>
+        <div class="helpdesk-table">
+          <div class="helpdesk-row"><div class="helpdesk-q"><span class="icon">❓</span>怀疑商业秘密泄露</div>
+            <div class="helpdesk-a"><span class="arrow">→</span><div><strong>立即上报直属上级</strong> + 人力 (合规红线)</div></div></div>
+          <div class="helpdesk-row"><div class="helpdesk-q"><span class="icon">❓</span>遇到不当言行 / 骚扰</div>
+            <div class="helpdesk-a"><span class="arrow">→</span><div><strong>人力</strong> 或直接 <strong>Bohan</strong></div></div></div>
+        </div>
+
+        <div class="callout info">💡 黄金法则：90% 情况，<strong>先问直属上级或带教导师</strong>。他们会给你正确路径，比你自己冷启动快 10 倍。</div>` },
+    ],
+    quiz: []
+  },
+
+  {
+    id: 't_checklist', kind: 'tool', emoji: '✅', accent: 'var(--c-general)',
+    title: '我的入职清单',
+    sub: '可勾选 · 自动保存 · 看着自己一天天上手',
+    tag: '工具箱 · 速查',
+    blocks: [
+      { type: 'checklist', title: '入职清单 — 一项一项打勾', body: '' /* rendered dynamically */ },
+    ],
+    quiz: []
+  },
+];
+
+/* ---------- DATA: Glossary terms ---------- */
+const GLOSSARY_CATEGORIES = [
+  { id: 'all',      label: '全部',     color: '#a78bfa' },
+  { id: 'hardware', label: '硬件',     color: '#f472b6' },
+  { id: 'supply',   label: '供应链',   color: '#34d399' },
+  { id: 'cn',       label: '电商',     color: '#fbbf24' },
+  { id: 'overseas', label: '海外',     color: '#a78bfa' },
+  { id: 'general',  label: '通用',     color: '#38bdf8' },
+];
+const GLOSSARY = [
+  // Hardware
+  { term: 'B0 / B1 / B2 样', cat: 'hardware', def: '硬件迭代的样机版本号。B0 是首版手板，问题多；B1 修主要问题、能跑起来；B2 接近量产水平、用来试产。看到"B2 评审"基本意味着产品快上市了。' },
+  { term: '试产', cat: 'hardware', def: '工厂用接近量产工艺做小批量生产，验证产线良率和工艺可行性。介于打样和量产之间。' },
+  { term: '量产', cat: 'hardware', def: '正式批量生产。量产开始 = 这一代产品的设计已冻结。' },
+  { term: 'BOM', cat: 'hardware', def: 'Bill of Materials 物料清单。一颗硬件用到的所有元器件、外壳、配件的完整列表。采购据此备料。' },
+  { term: 'PCBA', cat: 'hardware', def: 'PCB Assembly 印刷电路板组装。即贴好元器件的电路板，是硬件产品的"心脏"。' },
+  { term: 'SysEx', cat: 'hardware', def: 'System Exclusive Message。一种 MIDI 厂商专属消息格式。视感的 LED 灯光控制就用 SysEx — 不是普通 Note On/Off。' },
+  { term: 'MIDI', cat: 'hardware', def: '音乐设备数字接口。视感键盘 / 吉他 / 尤克里里跟 APP 通讯的协议层。' },
+
+  // Supply chain
+  { term: 'SKU', cat: 'supply', def: 'Stock Keeping Unit 库存单位。一个 SKU 对应一种"颜色 / 规格 / 套餐"的具体商品。同一款产品的 4 个颜色 = 4 个 SKU。' },
+  { term: 'AQL', cat: 'supply', def: 'Acceptable Quality Level 可接受质量水平。抽检时容许的不良品比例阈值。"AQL 1.0" 比 "AQL 2.5" 严格得多。' },
+  { term: '入库 / 出库', cat: 'supply', def: '产品进入仓库 / 离开仓库。每次入出库都有记录，决定库存数据的准确性。' },
+  { term: '铺货 / 备货', cat: 'supply', def: '铺货 = 把货发到各销售渠道；备货 = 大促前提前把库存堆好。备货不足 = 大促当天断货。' },
+  { term: '抽检', cat: 'supply', def: '不是每件都查，按 AQL 标准抽样验。视感品质部入库前必抽。' },
+  { term: '资质 / 第三方认证', cat: 'supply', def: '产品合规证书：CE (欧盟)、FCC (美国)、3C (中国强制)、PSE (日本) 等。由交付中心 - 品质协调第三方公司做。' },
+  { term: '返货 / 返修', cat: 'supply', def: '用户退回的有问题产品 → 维修流程 → 重新入库或报废。国内国外都有。' },
+
+  // E-commerce (CN)
+  { term: '场控 / 厂控', cat: 'cn', def: '直播间运营的关键角色。控制直播节奏、流量调度、商品上下架、福袋发放。视感内部两种写法都用。' },
+  { term: '主播', cat: 'cn', def: '直播间出镜讲产品的人。视感主播是经营单元，跟客服 / 场控 / 主管搭班子。' },
+  { term: 'KOL / KOC', cat: 'cn', def: 'KOL = 关键意见领袖 (大粉丝量)；KOC = 关键意见消费者 (小粉丝但真实用户)。视感品牌传播两种都用。' },
+  { term: '坑位', cat: 'cn', def: '在某个达人 / 主播的直播 / 视频里"占一个商品位"。坑位费 = 给达人付的合作费用。' },
+  { term: 'ROI', cat: 'cn', def: 'Return on Investment 投入产出比。在电商一般指广告投入产出 — 1 块钱广告带来多少销售额。' },
+  { term: '客单价', cat: 'cn', def: '平均一个用户下单金额。提升客单价 = 让用户买更多。' },
+  { term: '转化率', cat: 'cn', def: '看到 / 进店 / 加购 / 下单各环节的递减比例。"加购转化 30%、下单转化 5%"是典型数字。' },
+  { term: '店铺权重 / 流量', cat: 'cn', def: '平台 (淘宝 / 抖音) 给店铺分配的曝光量。受 GMV、好评、退货率、活跃度影响。' },
+
+  // Overseas
+  { term: 'FBA', cat: 'overseas', def: 'Fulfillment by Amazon 亚马逊代发货。我们把货寄到亚马逊海外仓，由亚马逊负责仓储 / 派送 / 售后。' },
+  { term: 'Listing', cat: 'overseas', def: '亚马逊的商品详情页。包括标题、图片、卖点、A+ 内容、关键词。Listing 优化是亚马逊运营核心。' },
+  { term: 'A+ 内容', cat: 'overseas', def: '亚马逊品牌商家可以加的"长图文"详情。比普通描述更生动，提升转化。' },
+  { term: 'ACOS / TACOS', cat: 'overseas', def: 'ACOS = 广告费 / 广告带来的销售额；TACOS = 广告费 / 总销售额。海外电商衡量广告效率的两个核心指标。' },
+  { term: 'Buy Box', cat: 'overseas', def: '亚马逊上"立即购买"按钮归属的卖家。同一商品多卖家时，谁拿 Buy Box 谁拿订单。' },
+  { term: 'Shopify', cat: 'overseas', def: '独立站建站 SaaS。视感独立站基于它搭建。配合 Facebook / Google / TikTok 投流。' },
+  { term: 'BD', cat: 'overseas', def: 'Business Development 业务拓展。视感海外渠道 BD = 找大客户 / 经销商谈合作。' },
+
+  // General
+  { term: '1on1', cat: 'general', def: '一对一面谈。一般指你跟直属上级 / 带教导师定期的私密沟通。视感强烈建议每周做一次。' },
+  { term: 'OKR / KPI', cat: 'general', def: 'OKR = 目标 + 关键结果 (方向 + 度量)；KPI = 关键绩效指标。视感岗位有明确 KPI，部分团队跑 OKR。' },
+  { term: '述职', cat: 'general', def: '在团队 / 上级面前系统汇报"我做了什么、为什么、下一步"。视感试用期中期必做一次。' },
+  { term: '复盘', cat: 'general', def: '事后回顾 — 哪些做对了、哪些做错了、下次怎么改。"如果不复盘，等于错了两次"是 Bohan 内部信原话。' },
+  { term: 'SOP', cat: 'general', def: 'Standard Operating Procedure 标准操作流程。新人主要靠学 SOP 上手。每个岗位都有自己的 SOP 文档。' },
+  { term: 'demo', cat: 'general', def: '产品演示 / 功能展示。"给我看个 demo"≈ 给我现场跑一遍。' },
+  { term: '飞书云文档 / 钉钉审批', cat: 'general', def: '视感双工具分工：协作 / 文档 / 会议 → 飞书；考勤 / 审批 / 公告 → 钉钉。两个不要混。' },
+];
+
+/* ---------- DATA: Checklist ---------- */
+const CHECKLIST_GROUPS = [
+  { id: 'day1', title: '🌅 第一天', items: [
+    { id: 'd1_doc',     text: '提交身份证复印件 + 银行卡 + 社保公积金转移单 (如有)' },
+    { id: 'd1_device',  text: '行政部领办公设备 (电脑 / 显示器 / 键鼠 / 文具)' },
+    { id: 'd1_acct',    text: '开通钉钉 + 飞书账号' },
+    { id: 'd1_groups',  text: '加入部门飞书群 + 项目群' },
+    { id: 'd1_1v1',     text: '跟带教导师 / 直属上级开 30 分钟 1v1，明确第一周任务' },
+    { id: 'd1_door',    text: '门禁卡 / 工位确认' },
+  ]},
+  { id: 'week1', title: '📅 第一周', items: [
+    { id: 'w1_culture', text: '完成《公司与文化》模块 (含组织架构图)' },
+    { id: 'w1_first',   text: '完成《入职第一周》模块' },
+    { id: 'w1_dingtalk',text: '把钉钉所有审批流程跑一遍 (请假 / 补卡 / 出差 / 报销 / 加班)' },
+    { id: 'w1_feishu',  text: '把部门飞书云文档结构看一遍，知道哪类文件存哪儿' },
+    { id: 'w1_lunch',   text: '跟至少 2 位本部门同事吃饭 / 喝咖啡' },
+    { id: 'w1_xfunc',   text: '找出本部门 2 位最常对接的跨部门同事' },
+    { id: 'w1_glossary',text: '把"视感黑话词典"过一遍，标记看不懂的术语' },
+  ]},
+  { id: 'month1', title: '🗓️ 第一个月', items: [
+    { id: 'm1_general', text: '完成所有 7 个通用篇模块' },
+    { id: 'm1_dept',    text: '完成你部门的概览模块' },
+    { id: 'm1_demo',    text: '看完所有 3 条产品线 (2 代套装 / 键盘 / LED 尤克里里) 的 demo' },
+    { id: 'm1_deliver', text: '至少独立交付 1 个基础任务' },
+    { id: 'm1_review',  text: '跟带教导师做一次中期复盘' },
+    { id: 'm1_team',    text: '加入团建活动一次' },
+    { id: 'm1_other_dept', text: '至少看完 1 个其他部门的概览模块 (拓展视野)' },
+  ]},
+  { id: 'probation', title: '🎯 试用期内 (3 个月)', items: [
+    { id: 'p_deliver',  text: '完成 2-3 个独立交付任务，建立"言必出、行必果"的口碑' },
+    { id: 'p_midterm',  text: '试用期中期述职' },
+    { id: 'p_eval',     text: '转正前 1 周完成《试用期考核表》' },
+    { id: 'p_value',    text: '能跟同事讲清楚视感的 slogan、核心使命、6 条价值观' },
+    { id: 'p_pitch',    text: '跟非视感的朋友能讲清楚"我在视感做什么、视感在做什么"' },
+  ]},
 ];
 
 /* ---------- STATE & PERSISTENCE ---------- */
@@ -1534,6 +2145,7 @@ function defaultState() {
     name: '', dept: '', startedAt: '', completedAt: '',
     moduleStatus: {}, // id -> { passed, score, attempts }
     adminMode: false,
+    checklist: {}, // itemId -> true
   };
 }
 
@@ -1554,6 +2166,7 @@ let state = loadState();
 
 function generalModules() { return MODULES.filter(m => m.kind === 'general'); }
 function deptModules() { return MODULES.filter(m => m.kind === 'department'); }
+function toolModules() { return MODULES.filter(m => m.kind === 'tool'); }
 function deptModuleFor(deptId) { return MODULES.find(m => m.kind === 'department' && m.dept === deptId); }
 
 function isPassed(id) {
@@ -1565,6 +2178,7 @@ function isPassed(id) {
 //   Department (d_*): unlocked after ALL general modules passed; user can do their own first.
 function isUnlocked(mod) {
   if (state.adminMode) return true;
+  if (mod.kind === 'tool') return true; // tools are always available
   if (mod.kind === 'general') {
     const idx = generalModules().findIndex(m => m.id === mod.id);
     if (idx <= 0) return true;
@@ -1578,7 +2192,8 @@ function isUnlocked(mod) {
 }
 
 function isRequired(mod) {
-  // All general are required. Among dept, only the user's own dept is required.
+  // All general are required. Among dept, only the user's own dept is required. Tools never required.
+  if (mod.kind === 'tool') return false;
   if (mod.kind === 'general') return true;
   return mod.dept === state.dept;
 }
@@ -1718,6 +2333,7 @@ function renderHub() {
   const otherDeptCards = admin
     ? deptModules().map(m => moduleCard(m)).join('')
     : deptModules().filter(m => m.dept !== userDeptId).map(m => moduleCard(m)).join('');
+  const toolCards = toolModules().map(m => moduleCard(m)).join('');
 
   const certUnlocked = allRequiredDone();
 
@@ -1801,6 +2417,14 @@ function renderHub() {
         <div class="grid">${otherDeptCards}</div>
       </div>
 
+      <div class="section" style="--accent: var(--c-general)">
+        <div class="section-title">
+          <h2>🛠️ 工具箱 · 速查参考</h2>
+          <span class="desc">永远可用 · 没有测验 · 不计入进度</span>
+        </div>
+        <div class="grid">${toolCards}</div>
+      </div>
+
       ${certSection}
     </div>
   `;
@@ -1845,6 +2469,22 @@ function moduleCard(m, isMyDept = false) {
   const passed = isPassed(m.id);
   const unlocked = isUnlocked(m);
   const status = passed ? 'completed' : (unlocked ? 'unlocked' : 'locked');
+
+  // Tools have a different presentation: always available, no quiz, no completion state
+  if (m.kind === 'tool') {
+    return `
+      <div class="card tool" data-mid="${m.id}" style="--accent: ${m.accent}">
+        <div class="emoji">${m.emoji}</div>
+        <h3>${m.title}</h3>
+        <div class="card-sub">${m.sub}</div>
+        <div class="card-foot">
+          <span class="badge tool">🛠 速查工具</span>
+          <span style="color:#8a8eb8;">随时打开 →</span>
+        </div>
+      </div>
+    `;
+  }
+
   let badge;
   if (passed) badge = '<span class="badge done">✓ 已完成</span>';
   else if (!unlocked) badge = '<span class="badge locked">🔒 待解锁</span>';
@@ -1878,13 +2518,21 @@ function renderModule(mid) {
         ${b.body}
       </div>`;
     }
+    if (b.type === 'glossary') {
+      return `<div id="glossaryRoot"></div>`;
+    }
+    if (b.type === 'checklist') {
+      return `<div id="checklistRoot"></div>`;
+    }
     return `<div class="block"><h2>${b.title}</h2>${b.body}</div>`;
   }).join('');
 
   const accentVar = mod.accent;
-
+  const isTool = mod.kind === 'tool';
   const admin = state.adminMode;
-  const adminBanner = admin
+  const showQuiz = !admin && !isTool && mod.quiz && mod.quiz.length > 0;
+
+  const adminBanner = admin && !isTool
     ? `<div class="admin-banner">👑 <strong style="color:#fff;">管理者预览</strong> · 已隐藏测验，新人侧仍会看到 ${mod.quiz.length} 道题。</div>`
     : '';
   const headerMeta = admin
@@ -1892,7 +2540,7 @@ function renderModule(mid) {
        <button class="btn ghost" id="hubBtn">⌂ 返回大厅</button>`
     : `<span>👤 ${escapeHtml(state.name)}</span>
        <button class="btn ghost" id="hubBtn">⌂ 返回大厅</button>`;
-  const quizSection = admin ? '' : `
+  const quizSection = !showQuiz ? '' : `
       <div class="quiz" id="quiz">
         <h2>🧠 模块小测 <span style="font-size:12px;color:#b4b8e0;font-weight:400">· ${mod.quiz.length} 题 · 通过线 80%</span></h2>
         <div class="quiz-sub">选答错没关系，每题选完会显示解释。全部答完点"提交"看是否通过。</div>
@@ -1931,12 +2579,113 @@ function renderModule(mid) {
     </div>
   `;
 
-  // Render questions only if quiz is shown (i.e., not admin mode)
-  if (!admin) renderQuiz(mod);
+  if (showQuiz) renderQuiz(mod);
+  // Tool-specific renderers
+  if (mod.id === 't_glossary') renderGlossary();
+  if (mod.id === 't_checklist') renderChecklist();
 
   document.getElementById('hubBtn').addEventListener('click', () => navigate('hub'));
   document.getElementById('backBtn').addEventListener('click', () => navigate('hub'));
   window.scrollTo(0, 0);
+}
+
+/* ---------- Glossary renderer ---------- */
+let glossaryFilter = { cat: 'all', q: '' };
+function renderGlossary() {
+  const root = document.getElementById('glossaryRoot');
+  if (!root) return;
+  root.innerHTML = `
+    <div class="glossary-search">
+      <span class="icon">🔍</span>
+      <input id="glossaryQ" type="search" placeholder="搜术语 / 中文 / 缩写 (例: SKU, FBA, 场控)" autocomplete="off" />
+      <span style="font-size:11px;color:#8a8eb8;" id="glossaryCount"></span>
+    </div>
+    <div class="glossary-cat-tabs" id="glossaryTabs"></div>
+    <div class="glossary-list" id="glossaryList"></div>
+  `;
+  const tabsEl = document.getElementById('glossaryTabs');
+  tabsEl.innerHTML = GLOSSARY_CATEGORIES.map(c => `
+    <span class="glossary-cat-tab ${c.id === glossaryFilter.cat ? 'active' : ''}" data-cat="${c.id}" style="--accent:${c.color};">${c.label}</span>
+  `).join('');
+  tabsEl.querySelectorAll('.glossary-cat-tab').forEach(el => {
+    el.addEventListener('click', () => {
+      glossaryFilter.cat = el.getAttribute('data-cat');
+      glossaryDraw();
+    });
+  });
+  document.getElementById('glossaryQ').addEventListener('input', e => {
+    glossaryFilter.q = e.target.value.trim().toLowerCase();
+    glossaryDraw();
+  });
+  glossaryDraw();
+}
+function glossaryDraw() {
+  const list = document.getElementById('glossaryList');
+  const tabs = document.querySelectorAll('.glossary-cat-tab');
+  tabs.forEach(t => t.classList.toggle('active', t.getAttribute('data-cat') === glossaryFilter.cat));
+  const q = glossaryFilter.q;
+  const items = GLOSSARY.filter(it => {
+    if (glossaryFilter.cat !== 'all' && it.cat !== glossaryFilter.cat) return false;
+    if (!q) return true;
+    return (it.term.toLowerCase().includes(q) || it.def.toLowerCase().includes(q));
+  });
+  document.getElementById('glossaryCount').textContent = `${items.length} / ${GLOSSARY.length} 条`;
+  if (items.length === 0) {
+    list.innerHTML = `<div class="glossary-empty">没找到匹配的术语 — 试试换个关键词，或者把这个词反馈给 HR / 直属上级，我们会加进字典里。</div>`;
+    return;
+  }
+  list.innerHTML = items.map(it => {
+    const cat = GLOSSARY_CATEGORIES.find(c => c.id === it.cat) || GLOSSARY_CATEGORIES[0];
+    return `<div class="glossary-item" style="--cat-color:${cat.color}">
+      <div class="term">${escapeHtml(it.term)}<span class="cat">${cat.label}</span></div>
+      <div class="def">${it.def}</div>
+    </div>`;
+  }).join('');
+}
+
+/* ---------- Checklist renderer ---------- */
+function renderChecklist() {
+  const root = document.getElementById('checklistRoot');
+  if (!root) return;
+  const total = CHECKLIST_GROUPS.reduce((s, g) => s + g.items.length, 0);
+  const done = CHECKLIST_GROUPS.reduce((s, g) =>
+    s + g.items.filter(it => state.checklist[it.id]).length, 0);
+  const pct = total > 0 ? Math.round(done / total * 100) : 0;
+
+  const groupsHtml = CHECKLIST_GROUPS.map(g => {
+    const gDone = g.items.filter(it => state.checklist[it.id]).length;
+    const items = g.items.map(it => {
+      const checked = !!state.checklist[it.id];
+      return `<label class="check-item ${checked ? 'done' : ''}" data-iid="${it.id}">
+        <input type="checkbox" ${checked ? 'checked' : ''} data-iid="${it.id}">
+        <span class="ci-text">${it.text}</span>
+      </label>`;
+    }).join('');
+    return `<div class="checklist-section">
+      <h3>${g.title}<span class="stage-prog">${gDone} / ${g.items.length}</span></h3>
+      ${items}
+    </div>`;
+  }).join('');
+
+  root.innerHTML = `
+    <div class="block">
+      <h2>我的入职清单 <span style="font-size:13px;color:#b4b8e0;font-weight:400;">· ${done} / ${total} 完成 · ${pct}%</span></h2>
+      <p style="color:#b4b8e0;font-size:13px;">勾选会自动保存在你这台浏览器里。每天来看一眼，给自己一个"我在前进"的实感。</p>
+      <div class="checklist-progress"><div class="checklist-progress-fill" style="width:${pct}%"></div></div>
+      ${groupsHtml}
+      <div class="callout info">💡 第一周勾完 60%、第一个月勾完 80% 就算上手了。不用赶，按节奏来。</div>
+    </div>
+  `;
+
+  root.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+    cb.addEventListener('change', () => {
+      const iid = cb.getAttribute('data-iid');
+      if (cb.checked) state.checklist[iid] = true;
+      else delete state.checklist[iid];
+      saveState();
+      renderChecklist(); // re-render to update progress + label strikethrough
+    });
+  });
 }
 
 let quizAnswers = {};
