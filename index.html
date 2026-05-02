@@ -3435,14 +3435,197 @@ function renderCert() {
       </div>
       <div class="cert-actions">
         <button class="btn secondary" id="hubBtn2">返回大厅</button>
-        <button class="btn" id="printBtn">🖨 打印 / 保存为 PDF</button>
+        <button class="btn" id="downloadImgBtn">📸 下载证书图片</button>
+        <button class="btn secondary" id="printBtn">🖨 打印 / 保存 PDF</button>
       </div>
     </div>
   `;
   document.getElementById('hubBtn').addEventListener('click', () => navigate('hub'));
   document.getElementById('hubBtn2').addEventListener('click', () => navigate('hub'));
   document.getElementById('printBtn').addEventListener('click', () => window.print());
+  document.getElementById('downloadImgBtn').addEventListener('click', () => {
+    downloadCertImage(state.name, deptLabel, dateStr, totalScore);
+  });
   window.scrollTo(0, 0);
+}
+
+/* ---------- Cert image generator (Canvas, no external deps) ---------- */
+function downloadCertImage(name, deptLabel, dateStr, score) {
+  // Render at 2x for retina-quality download
+  const W = 1200, H = 850, scale = 2;
+  const canvas = document.createElement('canvas');
+  canvas.width = W * scale;
+  canvas.height = H * scale;
+  const ctx = canvas.getContext('2d');
+  ctx.scale(scale, scale);
+
+  // ---- Background gradient ----
+  const bg = ctx.createLinearGradient(0, 0, W, H);
+  bg.addColorStop(0, '#1a1040');
+  bg.addColorStop(0.5, '#2a1855');
+  bg.addColorStop(1, '#1e1145');
+  ctx.fillStyle = bg;
+  ctx.fillRect(0, 0, W, H);
+
+  // ---- Decorative corner radial glows ----
+  const glow = (x, y, r, color) => {
+    const g = ctx.createRadialGradient(x, y, 0, x, y, r);
+    g.addColorStop(0, color);
+    g.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, W, H);
+  };
+  glow(W * 0.15, H * 0.18, 380, 'rgba(244,114,182,0.20)');
+  glow(W * 0.85, H * 0.22, 420, 'rgba(56,189,248,0.20)');
+  glow(W * 0.5, H * 1.0, 500, 'rgba(167,139,250,0.22)');
+
+  // ---- Rounded rectangle helper ----
+  const roundRect = (x, y, w, h, r) => {
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.lineTo(x + w - r, y);
+    ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+    ctx.lineTo(x + w, y + h - r);
+    ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+    ctx.lineTo(x + r, y + h);
+    ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+    ctx.lineTo(x, y + r);
+    ctx.quadraticCurveTo(x, y, x + r, y);
+    ctx.closePath();
+  };
+
+  // ---- Outer border (gradient stroke) ----
+  const borderGrad = ctx.createLinearGradient(0, 0, W, H);
+  borderGrad.addColorStop(0, 'rgba(56,189,248,0.55)');
+  borderGrad.addColorStop(0.5, 'rgba(167,139,250,0.55)');
+  borderGrad.addColorStop(1, 'rgba(244,114,182,0.55)');
+  ctx.strokeStyle = borderGrad;
+  ctx.lineWidth = 2.5;
+  roundRect(14, 14, W - 28, H - 28, 22);
+  ctx.stroke();
+
+  // ---- Inner border (subtle) ----
+  ctx.strokeStyle = 'rgba(255,255,255,0.10)';
+  ctx.lineWidth = 1;
+  roundRect(28, 28, W - 56, H - 56, 16);
+  ctx.stroke();
+
+  // ---- Helper: gradient text ----
+  const gradText = (text, x, y, font, x1, x2) => {
+    const g = ctx.createLinearGradient(x1, 0, x2, 0);
+    g.addColorStop(0, '#f472b6');
+    g.addColorStop(0.5, '#a78bfa');
+    g.addColorStop(1, '#38bdf8');
+    ctx.fillStyle = g;
+    ctx.font = font;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'alphabetic';
+    ctx.fillText(text, x, y);
+  };
+
+  // ---- Get logo from existing LOGO_SVG (which is now an <img> data-uri) ----
+  const m = LOGO_SVG.match(/src="(data:[^"]+)"/);
+  const logoSrc = m ? m[1] : null;
+
+  const drawAll = () => {
+    // Trophy emoji at very top
+    ctx.fillStyle = '#fff';
+    ctx.font = '54px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('🏆', W / 2, 95);
+
+    // Small caps title
+    ctx.fillStyle = 'rgba(180,184,224,0.85)';
+    ctx.font = '13px -apple-system, "PingFang SC", sans-serif';
+    // Manually space the letters for the SMALL CAPS effect
+    const titleText = 'V I S I O N I C   ·   O N B O A R D I N G   C E R T I F I C A T E';
+    ctx.fillText(titleText, W / 2, 295);
+
+    // Main heading with gradient
+    gradText('视感新人入职完成证书', W / 2, 350, 'bold 42px -apple-system, "PingFang SC", sans-serif', W / 2 - 320, W / 2 + 320);
+
+    // Name (large bold white)
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold 58px -apple-system, "PingFang SC", sans-serif';
+    ctx.fillText(name, W / 2, 470);
+
+    // Underline below name
+    const nameWidth = ctx.measureText(name).width;
+    const underlineW = Math.max(nameWidth + 80, 280);
+    ctx.strokeStyle = 'rgba(255,255,255,0.22)';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(W / 2 - underlineW / 2, 488);
+    ctx.lineTo(W / 2 + underlineW / 2, 488);
+    ctx.stroke();
+
+    // Body lines
+    ctx.fillStyle = '#d8dafc';
+    ctx.font = '17px -apple-system, "PingFang SC", sans-serif';
+    const lines = [
+      '已圆满完成《视感新人入职》全部必修模块的学习与考核，',
+      '熟悉公司文化、价值观、规章制度，',
+      `以及所在部门 ${deptLabel} 的业务概览。`,
+    ];
+    lines.forEach((line, i) => {
+      ctx.fillText(line, W / 2, 540 + i * 28);
+    });
+    ctx.fillStyle = '#c4b5fd';
+    ctx.font = 'bold 18px -apple-system, "PingFang SC", sans-serif';
+    ctx.fillText(`平均成绩 ${score}%  ·  欢迎正式加入视感家庭`, W / 2, 540 + lines.length * 28 + 18);
+
+    // Bottom row: date (left) + signature (right)
+    ctx.textAlign = 'left';
+    ctx.fillStyle = 'rgba(138,142,184,0.85)';
+    ctx.font = '11px -apple-system, "PingFang SC", sans-serif';
+    ctx.fillText('颁发日期', 90, 745);
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold 17px -apple-system, "PingFang SC", sans-serif';
+    ctx.fillText(dateStr, 90, 772);
+
+    ctx.textAlign = 'right';
+    ctx.fillStyle = 'rgba(138,142,184,0.85)';
+    ctx.font = '11px -apple-system, "PingFang SC", sans-serif';
+    ctx.fillText('签发', W - 90, 745);
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold 17px -apple-system, "PingFang SC", sans-serif';
+    ctx.fillText('深圳视感文化科技有限公司', W - 90, 772);
+
+    // Bottom-center subtle slogan
+    ctx.textAlign = 'center';
+    ctx.fillStyle = 'rgba(180,184,224,0.5)';
+    ctx.font = '11px -apple-system, "PingFang SC", sans-serif';
+    ctx.fillText('视觉引导感知 · 所见即所得', W / 2, 808);
+
+    // ---- Trigger download ----
+    canvas.toBlob((blob) => {
+      if (!blob) { toast('生成失败，请重试'); return; }
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `视感入职完成证书_${name}_${dateStr.replace(/[年月日]/g, '-').replace(/-+$/, '')}.png`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+      toast('🎉 证书图片已下载');
+    }, 'image/png');
+  };
+
+  if (logoSrc) {
+    const logo = new Image();
+    logo.crossOrigin = 'anonymous';
+    logo.onload = () => {
+      // Draw logo behind the trophy area
+      const logoSize = 150;
+      ctx.drawImage(logo, (W - logoSize) / 2, 130, logoSize, logoSize);
+      drawAll();
+    };
+    logo.onerror = drawAll; // continue without logo if it fails
+    logo.src = logoSrc;
+  } else {
+    drawAll();
+  }
 }
 
 /* ---------- Toast ---------- */
