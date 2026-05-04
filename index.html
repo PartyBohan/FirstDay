@@ -1641,19 +1641,19 @@ const MODULES = [
   {
     id: 'g_health', kind: 'general', emoji: '🏥', accent: 'var(--c-general)',
     title: '入职体检',
-    sub: '在哪体检 · 体检什么 · 报告交给谁',
+    sub: '体检什么 · 报销标准 · 报告交给谁',
     tag: '通用 · 必修',
     blocks: [
       { type: 'block', title: '为什么需要入职体检',
         body: `<p>视感要求每位新同事入职前 / 入职 30 天内完成一次<strong>正规医疗机构出具的入职体检报告</strong>。两个原因：</p>
         <ol>
-          <li><strong>保护你自己</strong> — 让你及时知道身体状况，提前发现问题</li>
+          <li><strong>保护你自己</strong> — 让你及时知道身体状况</li>
           <li><strong>保护视感</strong> — 满足《劳动合同法》对岗位健康要求的合规要求，特别是涉及驻厂、出差、海外业务的岗位</li>
         </ol>
-        <div class="callout info">📌 入职体检 = <strong>正常成人体检套餐</strong>，不是入伍体检。不会被刁难、不会出难题，正常公立 / 私立体检中心都可以做。</div>` },
+        <div class="callout info">📌 入职体检 = <strong>正常成人体检套餐</strong>，不是入伍体检。任何主流公立医院或体检中心的"入职体检套餐"都覆盖下面要求的项目，<strong>自行选择方便的就行</strong>。</div>` },
 
       { type: 'block', title: '必查项目（视感统一标准）',
-        body: `<p>下面这些项目是视感入职体检的<strong>必查项</strong>。任何正规体检中心的"入职体检套餐"基本都覆盖：</p>
+        body: `<p>下面这些项目是视感入职体检的<strong>必查项</strong>。<strong>主流医院 / 体检中心的"入职体检套餐"都包含这些</strong>，你自行选择方便的机构即可：</p>
         <ul>
           <li><strong>一般检查</strong>：身高、体重、血压、视力、内外科一般检查</li>
           <li><strong>血常规</strong>（含血型，方便紧急情况备案）</li>
@@ -1672,22 +1672,12 @@ const MODULES = [
           <li><strong>女员工</strong>：入职体检不强制做妇科 / 婚育相关检查（依据《妇女权益保障法》《就业促进法》）</li>
         </ul>` },
 
-      { type: 'block', title: '在哪做 · 推荐机构',
-        body: `<p>下面是视感员工常用的体检机构，<strong>三家任选其一</strong>即可：</p>
-        <ul>
-          <li><strong>美年大健康</strong> — 全国连锁，价格实惠（200-400 元入职套餐），各城市都有</li>
-          <li><strong>爱康国宾</strong> — 全国连锁，体验稍好（300-500 元入职套餐）</li>
-          <li><strong>当地三甲医院体检中心</strong> — 报告权威性最高，价格 200-400 元，缺点是排队较久</li>
-        </ul>
-        <div class="callout">📍 <strong>不要在不正规的"私人诊所"或"体检小作坊"做</strong>。报告无法被视感HR受理，需要重做。</div>
-        <p>已有 <strong>3 个月以内</strong> 的近期体检报告？符合上面项目要求的话，可以直接提交，不用重做。</p>` },
-
       { type: 'block', title: '费用与报销',
         body: `<ul>
           <li>入职体检费用：<strong>员工自费先垫付</strong></li>
-          <li>入职后凭体检发票 + 报告单到人力 / 行政部办理报销，<strong>限额 400 元</strong></li>
+          <li>入职后凭体检发票 + 报告单办理报销，<strong>限额 200 元</strong></li>
           <li>报销流程：钉钉 APP → 审批 → 报销 → 选择"入职体检"类目 → 上传发票 + 体检报告首页 → 直属上级审批 → 财务打款</li>
-          <li>已有 3 个月内的近期报告 → 不重做、不报销，但仍需提交报告</li>
+          <li>已有 <strong>3 个月以内</strong>的近期体检报告？符合必查项目要求的话，可以直接提交，不用重做（也不报销）</li>
         </ul>` },
 
       { type: 'block', title: '报告提交',
@@ -1698,43 +1688,8 @@ const MODULES = [
           <li>提交截止：<strong>入职 30 天内</strong>。逾期未提交可能影响转正。</li>
         </ol>
         <div class="callout info">💡 体检报告属于个人敏感信息。视感只用于入职合规存档，不会用于薪酬决策、绩效评估、晋升判定。</div>` },
-
-      { type: 'block', title: '体检结果异常 · 怎么办',
-        body: `<p>大多数人体检会有几项轻微异常（脂肪肝、转氨酶轻度升高、血压偏高等），这些属于正常范围，不影响入职。</p>
-        <p>但如果出现以下情况，请<strong>主动告知人力</strong>，视感会与你一起处理：</p>
-        <ul>
-          <li>医生在报告上明确建议<strong>不能从事某类工作</strong>（如不能久坐、不能搬重物等）</li>
-          <li>发现需要<strong>立即治疗的严重疾病</strong></li>
-          <li>有<strong>需要公司知晓的慢性病</strong>（如癫痫、严重心脏病等紧急情况备案用）</li>
-        </ul>
-        <div class="callout warning">⚠️ <strong>视感不会因为体检异常而拒绝录用或解除合同</strong> — 这是法律红线（《就业促进法》第 30 条）。但<strong>主动告知</strong>能帮助公司更好地安排你的工作场景，对你自己也更安全。</div>` },
     ],
-    quiz: [
-      { q: '视感要求新同事在入职<strong>多久内</strong>完成入职体检并提交报告？',
-        opts: ['入职当天','入职 7 天内','<strong>入职 30 天内</strong>','无明确要求'],
-        a: 2, why: '视感要求入职 30 天内完成体检并提交报告。逾期可能影响转正。已有 3 个月内的近期报告可直接提交。' },
-      { q: '入职体检的费用怎么处理？',
-        opts: [
-          '公司直接付给医院',
-          '<strong>员工自费先垫付，凭发票报销，限额 400 元</strong>',
-          '完全自费',
-          '从工资里扣除'],
-        a: 1, why: '员工自费先垫付，入职后凭发票 + 报告通过钉钉报销，限额 400 元。' },
-      { q: '可以在哪里做入职体检？',
-        opts: [
-          '只能在公立三甲医院',
-          '只能在美年 / 爱康国宾',
-          '<strong>美年 / 爱康 / 当地三甲医院体检中心三家任选</strong>，不可在私人诊所',
-          '可以在任何能开发票的医院'],
-        a: 2, why: '美年大健康、爱康国宾、当地三甲医院体检中心三家任选其一。私人诊所、小型体检站不被受理。' },
-      { q: '体检发现身体某项指标轻度异常，公司会怎么处理？',
-        opts: [
-          '立即解除合同',
-          '降低工资',
-          '<strong>视感不会因体检异常拒绝录用或解约（《就业促进法》第 30 条）；建议你主动告知，便于安排合适的工作场景</strong>',
-          '让你重新体检直到合格'],
-        a: 2, why: '《就业促进法》第 30 条禁止用人单位以健康原因歧视劳动者。视感的态度是"主动告知有助于双方更好地安排工作"，而不是"异常就走人"。' },
-    ]
+    quiz: []
   },
 
   {
@@ -3455,17 +3410,21 @@ function renderModule(mid) {
   const accentVar = mod.accent;
   const isTool = mod.kind === 'tool';
   const admin = state.adminMode;
-  const showQuiz = !admin && !isTool && mod.quiz && mod.quiz.length > 0;
+  const hasQuiz = mod.quiz && mod.quiz.length > 0;
+  const showQuiz = !admin && !isTool && hasQuiz;
+  // For general modules without quiz, show a "Mark as read" button instead
+  const showAckBtn = !admin && !isTool && !hasQuiz && mod.kind === 'general';
 
   const adminBanner = admin && !isTool
-    ? `<div class="admin-banner">👑 <strong style="color:#fff;">管理者预览</strong> · 已隐藏测验，新人侧仍会看到 ${mod.quiz.length} 道题。</div>`
+    ? `<div class="admin-banner">👑 <strong style="color:#fff;">管理者预览</strong> · ${hasQuiz ? '已隐藏测验，新人侧仍会看到 ' + mod.quiz.length + ' 道题。' : '此模块无测验。'}</div>`
     : '';
   const headerMeta = admin
     ? `<span class="admin-badge">👑 管理者</span>
        <button class="btn ghost" id="hubBtn">⌂ 返回大厅</button>`
     : `<span>👤 ${escapeHtml(state.name)}</span>
        <button class="btn ghost" id="hubBtn">⌂ 返回大厅</button>`;
-  const quizSection = !showQuiz ? '' : `
+  const alreadyDone = isPassed(mod.id);
+  const quizSection = showQuiz ? `
       <div class="quiz" id="quiz">
         <h2>🧠 模块小测 <span style="font-size:12px;color:#b4b8e0;font-weight:400">· ${mod.quiz.length} 题 · 通过线 80%</span></h2>
         <div class="quiz-sub">选答错没关系，每题选完会显示解释。全部答完点"提交"看是否通过。</div>
@@ -3477,7 +3436,16 @@ function renderModule(mid) {
             <button class="btn" id="submitQuizBtn">提交答案</button>
           </div>
         </div>
-      </div>`;
+      </div>` : (showAckBtn ? `
+      <div class="quiz" id="quiz" style="text-align:center;">
+        <h2>📖 这个模块没有测验</h2>
+        <div class="quiz-sub">请认真读完上方所有内容。读完后点下面按钮标记完成 — 即可解锁下一个模块。</div>
+        <div style="margin-top:16px;">
+          ${alreadyDone
+            ? '<span class="quiz-status pass">🎉 已标记完成 — 可以进入下一模块</span><br><br><button class="btn" id="ackHubBtn">返回大厅 →</button>'
+            : '<button class="btn" id="ackBtn">✓ 我已读完，标记完成</button>'}
+        </div>
+      </div>` : '');
 
   $app.innerHTML = `
     <div class="hub-header">
@@ -3505,6 +3473,26 @@ function renderModule(mid) {
   `;
 
   if (showQuiz) renderQuiz(mod);
+  // For modules without quiz: hook the "mark as read" button
+  if (showAckBtn) {
+    const ackBtn = document.getElementById('ackBtn');
+    if (ackBtn) {
+      ackBtn.addEventListener('click', () => {
+        const prev = state.moduleStatus[mod.id] || { passed: false, score: 100, attempts: 0 };
+        state.moduleStatus[mod.id] = { passed: true, score: 100, attempts: prev.attempts + 1 };
+        saveState();
+        toast('🎉 已标记完成');
+        if (allRequiredDone() && !state.completedAt) {
+          state.completedAt = new Date().toISOString();
+          saveState();
+          setTimeout(() => toast('🏆 全部必修模块完成！可以领证书了'), 1500);
+        }
+        navigate('hub');
+      });
+    }
+    const ackHubBtn = document.getElementById('ackHubBtn');
+    if (ackHubBtn) ackHubBtn.addEventListener('click', () => navigate('hub'));
+  }
   // Tool-specific renderers
   if (mod.id === 't_glossary') renderGlossary();
   if (mod.id === 't_checklist') renderChecklist();
