@@ -522,11 +522,69 @@
   /* Print: cert nice on paper */
   @media print {
     body { background: #fff; }
-    .hub-header, .module-back, .cert-actions, .btn { display: none !important; }
+    .hub-header, .module-back, .cert-actions, .btn, .theme-toggle { display: none !important; }
     .cert { box-shadow: none; border: 2px solid #1a1040; color: #1a1040; background: #fff; }
     .cert .cert-name, .cert .cert-h { color: #1a1040 !important; -webkit-text-fill-color: #1a1040 !important; background: none !important; }
     .cert .cert-body, .cert .cert-meta, .cert .cert-title { color: #555 !important; }
   }
+
+  /* Full report print mode */
+  body.printing-full #app, body.printing-full .theme-toggle, body.printing-full #toast { display: none !important; }
+  body.printing-full #fullReport { display: block !important; }
+  #fullReport { display: none; }
+  @media print {
+    body.printing-full { background: #fff !important; }
+    body.printing-full #fullReport { display: block !important; }
+    body.printing-full #app { display: none !important; }
+  }
+  /* Full report layout (always white, always serif-friendly) */
+  #fullReport {
+    background: #fff; color: #1a1040;
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    padding: 28px 36px;
+    max-width: 800px; margin: 0 auto;
+  }
+  #fullReport h1 {
+    font-size: 24px; margin: 0 0 4px;
+    background: linear-gradient(90deg, #f472b6, #a78bfa, #38bdf8);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  #fullReport h2 {
+    font-size: 16px; margin: 22px 0 8px;
+    padding-bottom: 6px; border-bottom: 2px solid #a78bfa;
+    color: #1a1040;
+  }
+  #fullReport h3 { font-size: 13px; color: #6b21a8; margin: 12px 0 6px; }
+  #fullReport p, #fullReport li, #fullReport td, #fullReport th { font-size: 12px; color: #2a1f5c; line-height: 1.6; }
+  #fullReport .fr-meta { font-size: 11px; color: #8a85a8; margin-top: 6px; }
+  #fullReport .fr-cert-img {
+    display: block; max-width: 100%; height: auto;
+    border-radius: 12px; box-shadow: 0 4px 18px rgba(0,0,0,0.15);
+    margin: 12px auto;
+  }
+  #fullReport table.fr-tbl {
+    width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 12px;
+  }
+  #fullReport table.fr-tbl th, #fullReport table.fr-tbl td {
+    padding: 6px 10px; border: 1px solid rgba(26,16,64,0.12); text-align: left; vertical-align: top;
+  }
+  #fullReport table.fr-tbl th {
+    background: rgba(167,139,250,0.10); font-weight: 600; color: #1a1040;
+    width: 30%;
+  }
+  #fullReport .fr-section-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  }
+  #fullReport .fr-footer {
+    margin-top: 28px; padding-top: 12px;
+    border-top: 1px solid rgba(26,16,64,0.10);
+    font-size: 10px; color: #8a85a8; text-align: center;
+  }
+  #fullReport .fr-empty {
+    color: #8a85a8; font-style: italic; font-size: 11px;
+  }
+  #fullReport .fr-pagebreak { page-break-after: always; }
+  @page { margin: 12mm 14mm; size: A4; }
 
   .hidden { display: none !important; }
 
@@ -789,6 +847,85 @@
     transition: all .2s;
   }
   .admin-entry a:hover { color: #fbbf24; border-bottom-color: #fbbf24; }
+
+  /* ===== Basic Info Form ===== */
+  .info-progress {
+    background: rgba(255,255,255,0.06);
+    border-radius: 100px; height: 8px;
+    overflow: hidden; margin: 8px 0 16px;
+  }
+  .info-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #38bdf8, #a78bfa);
+    transition: width .3s;
+  }
+  .info-section {
+    margin-bottom: 18px;
+    padding: 16px 18px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+  }
+  .info-section h3 {
+    margin: 0 0 12px; font-size: 14px; color: #c4b5fd;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .info-section h3 .sect-prog {
+    font-size: 11px; color: #8a8eb8; font-weight: 400;
+  }
+  .info-fields {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 10px;
+  }
+  .info-field {
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .info-field label {
+    font-size: 12px; color: #b4b8e0;
+    display: flex; align-items: center; gap: 4px;
+  }
+  .info-field label .req { color: #f472b6; }
+  .info-field input,
+  .info-field select {
+    padding: 9px 12px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    color: #fff; font-size: 13px; font-family: inherit;
+    outline: none; transition: all .15s;
+  }
+  .info-field input:focus,
+  .info-field select:focus {
+    border-color: #a78bfa;
+    background: rgba(255,255,255,0.08);
+    box-shadow: 0 0 0 2px rgba(167,139,250,0.16);
+  }
+  .info-field select option { background: #1a1040; color: #fff; }
+  .info-field input.filled,
+  .info-field select.filled { border-color: rgba(74,222,128,0.4); }
+
+  /* Light mode form */
+  body.light .info-section {
+    background: rgba(255,255,255,0.7);
+    border-color: rgba(26,16,64,0.08);
+  }
+  body.light .info-section h3 { color: #6b21a8; }
+  body.light .info-section h3 .sect-prog { color: #8a85a8; }
+  body.light .info-field label { color: #5b5680; }
+  body.light .info-field input,
+  body.light .info-field select {
+    background: rgba(255,255,255,0.95);
+    border-color: rgba(26,16,64,0.12);
+    color: #1a1040;
+  }
+  body.light .info-field input:focus,
+  body.light .info-field select:focus {
+    background: #fff;
+    box-shadow: 0 0 0 2px rgba(167,139,250,0.20);
+  }
+  body.light .info-field select option { background: #fff; color: #1a1040; }
+  body.light .info-progress { background: rgba(26,16,64,0.10); }
 
   /* ===== Theme Toggle Button ===== */
   .theme-toggle {
@@ -1103,6 +1240,9 @@
 <canvas id="bgCanvas"></canvas>
 
 <div id="app"></div>
+
+<!-- Full report container (only visible during PDF print of full info) -->
+<div id="fullReport"></div>
 
 <button id="themeToggle" class="theme-toggle" title="切换日间 / 夜间">🌙</button>
 
@@ -1495,6 +1635,105 @@ const MODULES = [
       { q: '电脑坏了应该联系谁？',
         opts: ['直属上级','人力资源部','行政部设备维护专员','找隔壁同事自己修'],
         a: 2, why: '设备故障 → 行政部。人力资源管薪酬/合同；行政管设备/办公环境。' },
+    ]
+  },
+
+  {
+    id: 'g_health', kind: 'general', emoji: '🏥', accent: 'var(--c-general)',
+    title: '入职体检',
+    sub: '在哪体检 · 体检什么 · 报告交给谁',
+    tag: '通用 · 必修',
+    blocks: [
+      { type: 'block', title: '为什么需要入职体检',
+        body: `<p>视感要求每位新同事入职前 / 入职 30 天内完成一次<strong>正规医疗机构出具的入职体检报告</strong>。两个原因：</p>
+        <ol>
+          <li><strong>保护你自己</strong> — 让你及时知道身体状况，提前发现问题</li>
+          <li><strong>保护视感</strong> — 满足《劳动合同法》对岗位健康要求的合规要求，特别是涉及驻厂、出差、海外业务的岗位</li>
+        </ol>
+        <div class="callout info">📌 入职体检 = <strong>正常成人体检套餐</strong>，不是入伍体检。不会被刁难、不会出难题，正常公立 / 私立体检中心都可以做。</div>` },
+
+      { type: 'block', title: '必查项目（视感统一标准）',
+        body: `<p>下面这些项目是视感入职体检的<strong>必查项</strong>。任何正规体检中心的"入职体检套餐"基本都覆盖：</p>
+        <ul>
+          <li><strong>一般检查</strong>：身高、体重、血压、视力、内外科一般检查</li>
+          <li><strong>血常规</strong>（含血型，方便紧急情况备案）</li>
+          <li><strong>尿常规</strong></li>
+          <li><strong>肝功能</strong>（ALT、AST、总胆红素、白蛋白等）</li>
+          <li><strong>肾功能</strong>（肌酐、尿素氮）</li>
+          <li><strong>胸片 / 胸部 X 光</strong></li>
+          <li><strong>心电图</strong></li>
+          <li><strong>腹部 B 超</strong>（肝胆胰脾肾）</li>
+        </ul>
+        <h3 style="color:#c4b5fd;">特殊岗位加查</h3>
+        <ul>
+          <li><strong>产研中心 - 硬件 / 测试岗</strong>：色觉检查（识别 LED 颜色）</li>
+          <li><strong>交付中心 - 仓库 / 物流岗</strong>：腰椎 / 关节检查（涉及搬运）</li>
+          <li><strong>需要长期出差 / 驻厂岗</strong>：传染病四项（乙肝 / 丙肝 / 梅毒 / HIV — 出于公共卫生与个人健康双向考量）</li>
+          <li><strong>女员工</strong>：入职体检不强制做妇科 / 婚育相关检查（依据《妇女权益保障法》《就业促进法》）</li>
+        </ul>` },
+
+      { type: 'block', title: '在哪做 · 推荐机构',
+        body: `<p>下面是视感员工常用的体检机构，<strong>三家任选其一</strong>即可：</p>
+        <ul>
+          <li><strong>美年大健康</strong> — 全国连锁，价格实惠（200-400 元入职套餐），各城市都有</li>
+          <li><strong>爱康国宾</strong> — 全国连锁，体验稍好（300-500 元入职套餐）</li>
+          <li><strong>当地三甲医院体检中心</strong> — 报告权威性最高，价格 200-400 元，缺点是排队较久</li>
+        </ul>
+        <div class="callout">📍 <strong>不要在不正规的"私人诊所"或"体检小作坊"做</strong>。报告无法被视感HR受理，需要重做。</div>
+        <p>已有 <strong>3 个月以内</strong> 的近期体检报告？符合上面项目要求的话，可以直接提交，不用重做。</p>` },
+
+      { type: 'block', title: '费用与报销',
+        body: `<ul>
+          <li>入职体检费用：<strong>员工自费先垫付</strong></li>
+          <li>入职后凭体检发票 + 报告单到人力 / 行政部办理报销，<strong>限额 400 元</strong></li>
+          <li>报销流程：钉钉 APP → 审批 → 报销 → 选择"入职体检"类目 → 上传发票 + 体检报告首页 → 直属上级审批 → 财务打款</li>
+          <li>已有 3 个月内的近期报告 → 不重做、不报销，但仍需提交报告</li>
+        </ul>` },
+
+      { type: 'block', title: '报告提交',
+        body: `<ol>
+          <li>体检后 <strong>3-7 个工作日</strong>拿到报告（机构会通知）</li>
+          <li>报告原件交给<strong>人力资源部</strong>存档（HR 会扫描复印件归档，原件返还本人）</li>
+          <li>同时把报告 PDF 上传到飞书：<strong>飞书 → 知识库 → 个人入职档案 → 体检报告</strong></li>
+          <li>提交截止：<strong>入职 30 天内</strong>。逾期未提交可能影响转正。</li>
+        </ol>
+        <div class="callout info">💡 体检报告属于个人敏感信息。视感只用于入职合规存档，不会用于薪酬决策、绩效评估、晋升判定。</div>` },
+
+      { type: 'block', title: '体检结果异常 · 怎么办',
+        body: `<p>大多数人体检会有几项轻微异常（脂肪肝、转氨酶轻度升高、血压偏高等），这些属于正常范围，不影响入职。</p>
+        <p>但如果出现以下情况，请<strong>主动告知人力</strong>，视感会与你一起处理：</p>
+        <ul>
+          <li>医生在报告上明确建议<strong>不能从事某类工作</strong>（如不能久坐、不能搬重物等）</li>
+          <li>发现需要<strong>立即治疗的严重疾病</strong></li>
+          <li>有<strong>需要公司知晓的慢性病</strong>（如癫痫、严重心脏病等紧急情况备案用）</li>
+        </ul>
+        <div class="callout warning">⚠️ <strong>视感不会因为体检异常而拒绝录用或解除合同</strong> — 这是法律红线（《就业促进法》第 30 条）。但<strong>主动告知</strong>能帮助公司更好地安排你的工作场景，对你自己也更安全。</div>` },
+    ],
+    quiz: [
+      { q: '视感要求新同事在入职<strong>多久内</strong>完成入职体检并提交报告？',
+        opts: ['入职当天','入职 7 天内','<strong>入职 30 天内</strong>','无明确要求'],
+        a: 2, why: '视感要求入职 30 天内完成体检并提交报告。逾期可能影响转正。已有 3 个月内的近期报告可直接提交。' },
+      { q: '入职体检的费用怎么处理？',
+        opts: [
+          '公司直接付给医院',
+          '<strong>员工自费先垫付，凭发票报销，限额 400 元</strong>',
+          '完全自费',
+          '从工资里扣除'],
+        a: 1, why: '员工自费先垫付，入职后凭发票 + 报告通过钉钉报销，限额 400 元。' },
+      { q: '可以在哪里做入职体检？',
+        opts: [
+          '只能在公立三甲医院',
+          '只能在美年 / 爱康国宾',
+          '<strong>美年 / 爱康 / 当地三甲医院体检中心三家任选</strong>，不可在私人诊所',
+          '可以在任何能开发票的医院'],
+        a: 2, why: '美年大健康、爱康国宾、当地三甲医院体检中心三家任选其一。私人诊所、小型体检站不被受理。' },
+      { q: '体检发现身体某项指标轻度异常，公司会怎么处理？',
+        opts: [
+          '立即解除合同',
+          '降低工资',
+          '<strong>视感不会因体检异常拒绝录用或解约（《就业促进法》第 30 条）；建议你主动告知，便于安排合适的工作场景</strong>',
+          '让你重新体检直到合格'],
+        a: 2, why: '《就业促进法》第 30 条禁止用人单位以健康原因歧视劳动者。视感的态度是"主动告知有助于双方更好地安排工作"，而不是"异常就走人"。' },
     ]
   },
 
@@ -2657,6 +2896,17 @@ const MODULES = [
     ],
     quiz: []
   },
+
+  {
+    id: 't_info', kind: 'tool', emoji: '📝', accent: 'var(--c-general)',
+    title: '我的基本信息',
+    sub: '入职 5 分钟填好 · 自动保存到本地 · 完成后跟证书一起导出 PDF',
+    tag: '工具箱 · 速查',
+    blocks: [
+      { type: 'basicinfo', title: '基本信息收集', body: '' /* rendered dynamically */ },
+    ],
+    quiz: []
+  },
 ];
 
 /* ---------- DATA: Glossary terms ---------- */
@@ -2716,6 +2966,55 @@ const GLOSSARY = [
   { term: '飞书云文档 / 钉钉审批', cat: 'general', def: '视感双工具分工：协作 / 文档 / 会议 → 飞书；考勤 / 审批 / 公告 → 钉钉。两个不要混。' },
 ];
 
+/* ---------- DATA: Basic Info Form ---------- */
+const BASIC_INFO_GROUPS = [
+  { id: 'personal', title: '👤 个人基础', fields: [
+    { id: 'name_zh',  label: '中文姓名', type: 'text', required: true, placeholder: '示例：张三' },
+    { id: 'name_en',  label: '英文姓名 / 拼音', type: 'text', placeholder: '示例：San Zhang (海外业务用)' },
+    { id: 'gender',   label: '性别', type: 'select', options: ['男', '女', '其他/不愿透露'], required: true },
+    { id: 'birthday', label: '出生年月日', type: 'date', required: true },
+    { id: 'id_card',  label: '身份证号', type: 'text', required: true, placeholder: '18 位' },
+  ]},
+  { id: 'contact', title: '📞 联系方式', fields: [
+    { id: 'phone',         label: '本人手机号', type: 'tel', required: true },
+    { id: 'email_personal',label: '个人邮箱', type: 'email', placeholder: '入职后开通公司邮箱要发到这里' },
+    { id: 'wechat',        label: '微信号', type: 'text', placeholder: '可选 — 方便紧急联系' },
+  ]},
+  { id: 'address', title: '🏠 地址', fields: [
+    { id: 'addr_household', label: '户籍地址', type: 'text', placeholder: '示例：浙江省杭州市西湖区...' },
+    { id: 'addr_current',   label: '现居住地址', type: 'text', required: true },
+  ]},
+  { id: 'emergency', title: '🆘 紧急联系人', fields: [
+    { id: 'emerg_name',     label: '紧急联系人姓名', type: 'text', required: true },
+    { id: 'emerg_relation', label: '与本人关系', type: 'text', required: true, placeholder: '示例：父亲 / 母亲 / 配偶 / 兄妹' },
+    { id: 'emerg_phone',    label: '紧急联系人电话', type: 'tel', required: true },
+  ]},
+  { id: 'bank', title: '💳 工资卡', fields: [
+    { id: 'bank_holder', label: '持卡人姓名', type: 'text', required: true, placeholder: '必须与本人姓名一致' },
+    { id: 'bank_name',   label: '开户银行', type: 'text', required: true, placeholder: '示例：招商银行' },
+    { id: 'bank_branch', label: '开户支行', type: 'text', placeholder: '示例：杭州西湖支行' },
+    { id: 'bank_card',   label: '银行卡号', type: 'text', required: true, placeholder: '不要填错，工资就打到这张卡' },
+  ]},
+  { id: 'edu', title: '🎓 教育背景', fields: [
+    { id: 'edu_level',  label: '最高学历', type: 'select', options: ['博士','硕士','本科','大专','高中/中专','其他'] },
+    { id: 'edu_school', label: '毕业院校', type: 'text' },
+    { id: 'edu_major',  label: '专业', type: 'text' },
+    { id: 'edu_year',   label: '毕业年份', type: 'text', placeholder: '示例：2024' },
+  ]},
+  { id: 'family', title: '👨‍👩‍👧 家庭', fields: [
+    { id: 'marital',  label: '婚姻状况', type: 'select', options: ['未婚','已婚','离异','其他/不愿透露'] },
+    { id: 'children', label: '子女情况', type: 'text', placeholder: '可选 — 例如：1 子 8 岁 / 无' },
+  ]},
+  { id: 'ssn', title: '📋 社保 / 公积金', fields: [
+    { id: 'social_security_transfer', label: '是否有社保公积金转移单', type: 'select', options: ['有 (将提交)','无 (新参保)','不确定 (需问 HR)'] },
+    { id: 'prev_company', label: '上一家公司名称', type: 'text', placeholder: '可选 — 用于社保接续' },
+  ]},
+  { id: 'health', title: '🏥 健康备注 (可选)', fields: [
+    { id: 'allergies',    label: '过敏史', type: 'text', placeholder: '便于团建/餐饮安排，例如：花生 / 海鲜' },
+    { id: 'health_notes', label: '其他健康备注', type: 'text', placeholder: '紧急情况备案，例如：糖尿病 / 高血压' },
+  ]},
+];
+
 /* ---------- DATA: Checklist ---------- */
 const CHECKLIST_GROUPS = [
   { id: 'day1', title: '🌅 第一天', items: [
@@ -2768,6 +3067,7 @@ function defaultState() {
     adminMode: false,
     checklist: {}, // itemId -> true
     theme: 'dark', // 'dark' | 'light'
+    basicInfo: {}, // fieldId -> value
   };
 }
 
@@ -3146,6 +3446,9 @@ function renderModule(mid) {
     if (b.type === 'checklist') {
       return `<div id="checklistRoot"></div>`;
     }
+    if (b.type === 'basicinfo') {
+      return `<div id="basicInfoRoot"></div>`;
+    }
     return `<div class="block"><h2>${b.title}</h2>${b.body}</div>`;
   }).join('');
 
@@ -3205,6 +3508,7 @@ function renderModule(mid) {
   // Tool-specific renderers
   if (mod.id === 't_glossary') renderGlossary();
   if (mod.id === 't_checklist') renderChecklist();
+  if (mod.id === 't_info') renderBasicInfoForm();
 
   document.getElementById('hubBtn').addEventListener('click', () => navigate('hub'));
   document.getElementById('backBtn').addEventListener('click', () => navigate('hub'));
@@ -3263,6 +3567,92 @@ function glossaryDraw() {
       <div class="def">${it.def}</div>
     </div>`;
   }).join('');
+}
+
+/* ---------- Basic Info form renderer ---------- */
+function renderBasicInfoForm() {
+  const root = document.getElementById('basicInfoRoot');
+  if (!root) return;
+
+  // If user already filled name on welcome screen, prefill name_zh
+  if (!state.basicInfo.name_zh && state.name) {
+    state.basicInfo.name_zh = state.name;
+    saveState();
+  }
+
+  const allFields = BASIC_INFO_GROUPS.flatMap(g => g.fields);
+  const filledCount = allFields.filter(f => (state.basicInfo[f.id] || '').trim() !== '').length;
+  const totalCount = allFields.length;
+  const requiredFields = allFields.filter(f => f.required);
+  const requiredFilled = requiredFields.filter(f => (state.basicInfo[f.id] || '').trim() !== '').length;
+  const pct = totalCount > 0 ? Math.round(filledCount / totalCount * 100) : 0;
+
+  const sectionsHtml = BASIC_INFO_GROUPS.map(g => {
+    const sFilled = g.fields.filter(f => (state.basicInfo[f.id] || '').trim() !== '').length;
+    const fieldsHtml = g.fields.map(f => {
+      const val = state.basicInfo[f.id] || '';
+      const filled = val.trim() !== '';
+      const placeholder = f.placeholder || '';
+      const required = f.required ? '<span class="req">*</span>' : '';
+      let input;
+      if (f.type === 'select') {
+        input = `<select data-fid="${f.id}" class="${filled ? 'filled' : ''}">
+          <option value="">— 请选择 —</option>
+          ${f.options.map(o => `<option value="${escapeHtml(o)}" ${val === o ? 'selected' : ''}>${escapeHtml(o)}</option>`).join('')}
+        </select>`;
+      } else {
+        input = `<input data-fid="${f.id}" type="${f.type || 'text'}" value="${escapeHtml(val)}" placeholder="${escapeHtml(placeholder)}" autocomplete="off" class="${filled ? 'filled' : ''}">`;
+      }
+      return `<div class="info-field">
+        <label>${escapeHtml(f.label)} ${required}</label>
+        ${input}
+      </div>`;
+    }).join('');
+    return `<div class="info-section">
+      <h3>${g.title}<span class="sect-prog">${sFilled} / ${g.fields.length}</span></h3>
+      <div class="info-fields">${fieldsHtml}</div>
+    </div>`;
+  }).join('');
+
+  root.innerHTML = `
+    <div class="block">
+      <h2>📝 我的基本信息 <span style="font-size:13px;color:#b4b8e0;font-weight:400;">· ${filledCount} / ${totalCount} 已填 · ${pct}% · 必填项 ${requiredFilled} / ${requiredFields.length}</span></h2>
+      <p style="color:#b4b8e0;font-size:13px;">所有信息<strong>只保存在你这台浏览器里</strong> — 视感不会自动接收。填好后跟你的完成证书一起<strong>导出 PDF</strong>，再交给 HR。</p>
+      <div class="info-progress"><div class="info-progress-fill" style="width:${pct}%"></div></div>
+      ${sectionsHtml}
+      <div class="callout warning">⚠️ <strong>身份证号 / 银行卡号 / 手机号</strong>是关键信息，<strong>务必反复核对</strong> — 工资就打到你填的卡上、社保就以你填的身份证号办理。填错的代价很大。</div>
+      <div class="callout info">💡 这个表单<strong>不需要一次填完</strong>。填一半、关掉、明天再来都不会丢。完成所有<strong>红色 *</strong> 必填项即可生成完整 PDF。</div>
+    </div>
+  `;
+
+  root.querySelectorAll('input[data-fid], select[data-fid]').forEach(el => {
+    const fid = el.getAttribute('data-fid');
+    const handler = () => {
+      const v = el.value.trim();
+      if (v) state.basicInfo[fid] = v;
+      else delete state.basicInfo[fid];
+      el.classList.toggle('filled', v !== '');
+      saveState();
+      // Update only the progress numbers (avoid full re-render which loses focus)
+      const newFilled = BASIC_INFO_GROUPS.flatMap(g => g.fields).filter(f => (state.basicInfo[f.id] || '').trim() !== '').length;
+      const newPct = totalCount > 0 ? Math.round(newFilled / totalCount * 100) : 0;
+      const fill = root.querySelector('.info-progress-fill');
+      if (fill) fill.style.width = newPct + '%';
+      const head = root.querySelector('.block > h2 span');
+      if (head) {
+        const newReqFilled = requiredFields.filter(f => (state.basicInfo[f.id] || '').trim() !== '').length;
+        head.textContent = `· ${newFilled} / ${totalCount} 已填 · ${newPct}% · 必填项 ${newReqFilled} / ${requiredFields.length}`;
+      }
+      // Update section progress
+      BASIC_INFO_GROUPS.forEach((g, idx) => {
+        const sFilledNow = g.fields.filter(f => (state.basicInfo[f.id] || '').trim() !== '').length;
+        const sectH = root.querySelectorAll('.info-section h3 .sect-prog')[idx];
+        if (sectH) sectH.textContent = `${sFilledNow} / ${g.fields.length}`;
+      });
+    };
+    el.addEventListener('input', handler);
+    el.addEventListener('change', handler);
+  });
 }
 
 /* ---------- Checklist renderer ---------- */
@@ -3436,7 +3826,8 @@ function renderCert() {
       <div class="cert-actions">
         <button class="btn secondary" id="hubBtn2">返回大厅</button>
         <button class="btn" id="downloadImgBtn">📸 下载证书图片</button>
-        <button class="btn secondary" id="printBtn">🖨 打印 / 保存 PDF</button>
+        <button class="btn" id="downloadFullPdfBtn" style="background:linear-gradient(135deg,#34d399,#a78bfa);">📄 下载完整信息 PDF</button>
+        <button class="btn secondary" id="printBtn">🖨 仅打印证书</button>
       </div>
     </div>
   `;
@@ -3445,6 +3836,9 @@ function renderCert() {
   document.getElementById('printBtn').addEventListener('click', () => window.print());
   document.getElementById('downloadImgBtn').addEventListener('click', () => {
     downloadCertImage(state.name, deptLabel, dateStr, totalScore);
+  });
+  document.getElementById('downloadFullPdfBtn').addEventListener('click', () => {
+    downloadFullReport(state.name, deptLabel, dateStr, totalScore);
   });
   window.scrollTo(0, 0);
 }
@@ -3626,6 +4020,189 @@ function downloadCertImage(name, deptLabel, dateStr, score) {
   } else {
     drawAll();
   }
+}
+
+/* ---------- Full Report PDF generator (uses browser's Print → Save as PDF) ---------- */
+function generateCertImageDataUrl(name, deptLabel, dateStr, score, callback) {
+  // Reuse the cert canvas drawing but return data URL instead of triggering download.
+  // We'll temporarily replace the toBlob behavior by patching it locally — easier to duplicate logic.
+  const W = 1200, H = 850, scale = 2;
+  const canvas = document.createElement('canvas');
+  canvas.width = W * scale; canvas.height = H * scale;
+  const ctx = canvas.getContext('2d');
+  ctx.scale(scale, scale);
+
+  const bg = ctx.createLinearGradient(0, 0, W, H);
+  bg.addColorStop(0, '#1a1040'); bg.addColorStop(0.5, '#2a1855'); bg.addColorStop(1, '#1e1145');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+
+  const glow = (x, y, r, color) => {
+    const g = ctx.createRadialGradient(x, y, 0, x, y, r);
+    g.addColorStop(0, color); g.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+  };
+  glow(W * 0.15, H * 0.18, 380, 'rgba(244,114,182,0.20)');
+  glow(W * 0.85, H * 0.22, 420, 'rgba(56,189,248,0.20)');
+  glow(W * 0.5, H * 1.0, 500, 'rgba(167,139,250,0.22)');
+
+  const roundRect = (x, y, w, h, r) => {
+    ctx.beginPath();
+    ctx.moveTo(x + r, y); ctx.lineTo(x + w - r, y);
+    ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+    ctx.lineTo(x + w, y + h - r);
+    ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+    ctx.lineTo(x + r, y + h);
+    ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+    ctx.lineTo(x, y + r);
+    ctx.quadraticCurveTo(x, y, x + r, y);
+    ctx.closePath();
+  };
+  const borderGrad = ctx.createLinearGradient(0, 0, W, H);
+  borderGrad.addColorStop(0, 'rgba(56,189,248,0.55)');
+  borderGrad.addColorStop(0.5, 'rgba(167,139,250,0.55)');
+  borderGrad.addColorStop(1, 'rgba(244,114,182,0.55)');
+  ctx.strokeStyle = borderGrad; ctx.lineWidth = 2.5;
+  roundRect(14, 14, W - 28, H - 28, 22); ctx.stroke();
+  ctx.strokeStyle = 'rgba(255,255,255,0.10)'; ctx.lineWidth = 1;
+  roundRect(28, 28, W - 56, H - 56, 16); ctx.stroke();
+
+  const gradText = (text, x, y, font, x1, x2) => {
+    const g = ctx.createLinearGradient(x1, 0, x2, 0);
+    g.addColorStop(0, '#f472b6'); g.addColorStop(0.5, '#a78bfa'); g.addColorStop(1, '#38bdf8');
+    ctx.fillStyle = g; ctx.font = font; ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+    ctx.fillText(text, x, y);
+  };
+
+  const m = LOGO_SVG.match(/src="(data:[^"]+)"/);
+  const logoSrc = m ? m[1] : null;
+
+  const drawAll = () => {
+    ctx.fillStyle = '#fff'; ctx.font = '54px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('🏆', W / 2, 95);
+    ctx.fillStyle = 'rgba(180,184,224,0.85)';
+    ctx.font = '13px -apple-system, "PingFang SC", sans-serif';
+    ctx.fillText('V I S I O N I C   ·   O N B O A R D I N G   C E R T I F I C A T E', W / 2, 295);
+    gradText('视感新人入职完成证书', W / 2, 350, 'bold 42px -apple-system, "PingFang SC", sans-serif', W / 2 - 320, W / 2 + 320);
+    ctx.fillStyle = '#fff'; ctx.font = 'bold 58px -apple-system, "PingFang SC", sans-serif';
+    ctx.fillText(name, W / 2, 470);
+    const nameWidth = ctx.measureText(name).width;
+    const underlineW = Math.max(nameWidth + 80, 280);
+    ctx.strokeStyle = 'rgba(255,255,255,0.22)'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(W / 2 - underlineW / 2, 488); ctx.lineTo(W / 2 + underlineW / 2, 488); ctx.stroke();
+    ctx.fillStyle = '#d8dafc'; ctx.font = '17px -apple-system, "PingFang SC", sans-serif';
+    const lines = ['已圆满完成《视感新人入职》全部必修模块的学习与考核，', '熟悉公司文化、价值观、规章制度，', `以及所在部门 ${deptLabel} 的业务概览。`];
+    lines.forEach((line, i) => ctx.fillText(line, W / 2, 540 + i * 28));
+    ctx.fillStyle = '#c4b5fd'; ctx.font = 'bold 18px -apple-system, "PingFang SC", sans-serif';
+    ctx.fillText(`平均成绩 ${score}%  ·  欢迎正式加入视感家庭`, W / 2, 540 + lines.length * 28 + 18);
+    ctx.textAlign = 'left'; ctx.fillStyle = 'rgba(138,142,184,0.85)';
+    ctx.font = '11px -apple-system, "PingFang SC", sans-serif';
+    ctx.fillText('颁发日期', 90, 745);
+    ctx.fillStyle = '#fff'; ctx.font = 'bold 17px -apple-system, "PingFang SC", sans-serif';
+    ctx.fillText(dateStr, 90, 772);
+    ctx.textAlign = 'right'; ctx.fillStyle = 'rgba(138,142,184,0.85)';
+    ctx.font = '11px -apple-system, "PingFang SC", sans-serif';
+    ctx.fillText('签发', W - 90, 745);
+    ctx.fillStyle = '#fff'; ctx.font = 'bold 17px -apple-system, "PingFang SC", sans-serif';
+    ctx.fillText('深圳视感文化科技有限公司', W - 90, 772);
+    ctx.textAlign = 'center'; ctx.fillStyle = 'rgba(180,184,224,0.5)';
+    ctx.font = '11px -apple-system, "PingFang SC", sans-serif';
+    ctx.fillText('视觉引导感知 · 所见即所得', W / 2, 808);
+
+    callback(canvas.toDataURL('image/png'));
+  };
+
+  if (logoSrc) {
+    const logo = new Image();
+    logo.onload = () => { ctx.drawImage(logo, (W - 150) / 2, 130, 150, 150); drawAll(); };
+    logo.onerror = drawAll;
+    logo.src = logoSrc;
+  } else {
+    drawAll();
+  }
+}
+
+function buildModuleCompletionTable() {
+  const required = MODULES.filter(isRequired);
+  const rows = required.map(m => {
+    const st = state.moduleStatus[m.id];
+    const passed = st && st.passed;
+    return `<tr>
+      <td>${m.emoji} ${escapeHtml(m.title)}</td>
+      <td>${passed ? '✓ 已通过' : '✗ 未通过'}</td>
+      <td>${st ? (st.score + '%') : '—'}</td>
+      <td>${st ? st.attempts + ' 次' : '—'}</td>
+    </tr>`;
+  }).join('');
+  return `<table class="fr-tbl" style="width:100%;">
+    <thead><tr><th style="width:50%;">模块</th><th>状态</th><th>成绩</th><th>尝试</th></tr></thead>
+    <tbody>${rows}</tbody>
+  </table>`;
+}
+
+function buildBasicInfoTable() {
+  const filledGroups = BASIC_INFO_GROUPS.map(g => {
+    const filled = g.fields.filter(f => (state.basicInfo[f.id] || '').trim() !== '');
+    if (filled.length === 0) return null;
+    const rows = filled.map(f => `<tr><th>${escapeHtml(f.label)}</th><td>${escapeHtml(state.basicInfo[f.id])}</td></tr>`).join('');
+    return `<h3>${g.title}</h3><table class="fr-tbl">${rows}</table>`;
+  }).filter(x => x).join('');
+  if (!filledGroups) return `<p class="fr-empty">未填写基本信息（可在工具箱 → 我的基本信息 中填写）。</p>`;
+  return filledGroups;
+}
+
+function buildChecklistSummary() {
+  const groups = CHECKLIST_GROUPS.map(g => {
+    const done = g.items.filter(it => state.checklist[it.id]).length;
+    const items = g.items.map(it => {
+      const checked = !!state.checklist[it.id];
+      return `<li>${checked ? '✓' : '○'} ${checked ? '<s>' : ''}${escapeHtml(it.text)}${checked ? '</s>' : ''}</li>`;
+    }).join('');
+    return `<h3>${g.title} <span style="font-size:11px;color:#8a85a8;">${done}/${g.items.length}</span></h3>
+      <ul style="padding-left:18px;margin:4px 0;">${items}</ul>`;
+  }).join('');
+  return groups;
+}
+
+function downloadFullReport(name, deptLabel, dateStr, totalScore) {
+  toast('🖨 正在生成完整 PDF 预览...');
+  generateCertImageDataUrl(name, deptLabel, dateStr, totalScore, (certDataUrl) => {
+    const fr = document.getElementById('fullReport');
+    const today = new Date().toLocaleString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+    fr.innerHTML = `
+      <h1>视感新人入职 · 完整信息报告</h1>
+      <div class="fr-meta">${escapeHtml(name)} · ${escapeHtml(deptLabel)} · 生成于 ${escapeHtml(today)}</div>
+
+      <h2>🏆 完成证书</h2>
+      <img src="${certDataUrl}" class="fr-cert-img" alt="完成证书">
+
+      <div class="fr-pagebreak"></div>
+
+      <h2>📝 基本信息</h2>
+      ${buildBasicInfoTable()}
+
+      <div class="fr-pagebreak"></div>
+
+      <h2>📚 模块完成情况</h2>
+      ${buildModuleCompletionTable()}
+
+      <h2>✅ 入职清单进度</h2>
+      ${buildChecklistSummary()}
+
+      <div class="fr-footer">
+        视感新人入职 · firstday.partykeys.org · 视觉引导感知，所见即所得
+      </div>
+    `;
+    document.body.classList.add('printing-full');
+    // Wait a tick for layout, then trigger print
+    setTimeout(() => {
+      window.print();
+      // After print dialog closes, restore normal view
+      setTimeout(() => {
+        document.body.classList.remove('printing-full');
+        fr.innerHTML = '';
+      }, 800);
+    }, 100);
+  });
 }
 
 /* ---------- Toast ---------- */
